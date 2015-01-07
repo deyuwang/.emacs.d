@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: newclass
+# key: newclass
+# --
+(function($1, exports){
+	
+	function $4(){
+		$0
+	}
+	
+$5.prototype = Object.create($6.prototype);
+	
+	exports.$7 = $8;
+})($2, $3);
