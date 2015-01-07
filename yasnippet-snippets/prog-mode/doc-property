@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: /**doc-property*/
+# key: docproperty
+# --
+/**
+ * $1
+ * @property $2
+ * @default ${3:null}
+ * @type {${4:Object}} $5
+ */
+ $0
