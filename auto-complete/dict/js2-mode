@@ -146,3 +146,13 @@ watch
 while
 window
 with
+
+getElementById
+appendChild
+removeChild
+createElement
+getElementsByTagName
+addEventListener
+removeEventListener
+toUpperCase
+toLowerCase
