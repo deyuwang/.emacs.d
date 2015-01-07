@@ -251,6 +251,8 @@
 (add-to-list 'load-path "~/.emacs.d/auto-complete")
 (add-to-list 'load-path "~/.emacs.d/popup-el")
 (add-to-list 'load-path "~/.emacs.d/yasnippet")
+(add-to-list 'load-path "~/.emacs.d/js2-mode")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
 ;;package
 (require 'package)
@@ -258,7 +260,7 @@
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
-;; color-theme
+;;color-theme
 ;;(require 'color-theme)
 ;;(color-theme-gnome2)
 ;(color-theme-classic)
@@ -291,8 +293,11 @@
 
 
 ;;js2-mode
-;(require 'js2-mode);
-;(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(require 'js2-mode)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
+;;theme
+(load-theme 'hickey t)
 
 ;; 加载其他脚本
 ;(load-file "~/.emacs.d/wdy.el")
