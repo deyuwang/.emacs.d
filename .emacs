@@ -25,8 +25,8 @@
 (setq show-paren-style 'parentheses)
 
 ;;显示列号
-;;(setq column-number-mode 0)
-;;(setq line-number-mode t)
+(setq column-number-mode 0)
+;(setq line-number-mode t)
 ;;在左侧显示行号
 (global-linum-mode 'linum-mode)
 
@@ -73,17 +73,21 @@
 ;(set-background-color "#CBE8CF")
 
 ;;隐藏菜单栏、右侧的滚动条 ;;(menu-bar-mode nil)
-;;(menu-bar-mode 0)
+(menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 
 ;;buffer 窗口快捷
-;(global-set-key [C-return] 'kill-this-buffer);C-return关闭当前buffer
+
 ;(global-set-key [f10] 'split-window-vertically);F10分割窗口
 ;(global-set-key [f11] 'delete-other-windows);F11 关闭其它窗口
-(define-key  key-translation-map [f9] (kbd "C-x C-s")) 
+;(global-set-key [C-return] 'kill-this-buffer);C-return关闭当前buffer
+(global-set-key (kbd "<f5>") 'kmacro-call-macro);播放宏
+(define-key  key-translation-map [f9] (kbd "C-x r l")) ;查看书签
+(define-key  key-translation-map [f10] (kbd "C-x r m")) ;增加书签
 (define-key  key-translation-map [f11] (kbd "C-x"))
 (define-key  key-translation-map [f12] (kbd "C-c"))
+
 
 ;; 设置Tab为4个字符
 (setq indent-tabs-mode nil)
@@ -253,17 +257,15 @@
 (add-to-list 'load-path "~/.emacs.d/yasnippet")
 (add-to-list 'load-path "~/.emacs.d/js2-mode")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(add-to-list 'load-path "~/.emacs.d/markdown-mode")
+(add-to-list 'load-path "~/.emacs.d/emacs-request")
+(add-to-list 'load-path "~/.emacs.d/emacs-nw")
 
 ;;package
 (require 'package)
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
-
-;;color-theme
-;;(require 'color-theme)
-;;(color-theme-gnome2)
-;(color-theme-classic)
 
 
 ;; --------------- 自动完成 -----------------------
@@ -274,8 +276,9 @@
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
 (ac-config-default)
+
 ;; Ctrl+回车触发
-(setq ac-auto-start nil) ;auto complete using clang is CPU sensitive
+;(setq ac-auto-start nil) ;auto complete using clang is CPU sensitive
 (ac-set-trigger-key "<C-return>")
 ;; backspace的删除后仍旧可以触发ac补全
 (setq ac-trigger-commands
@@ -297,7 +300,50 @@
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 ;;theme
-(load-theme 'hickey t)
+;(load-theme 'graham t)
+;夜晚或者在公司的时候使用暗色背景
+(defun get-hour ()
+  (string-to-int (format-time-string "%H" (current-time))))
+
+(defun is-at-night ()
+  (> (get-hour) 19))
+
+(defun is-sunday ()
+  (> (string-to-int (format-time-string "%u" (current-time))) 5 ))
+
+(defun is-at-home ()
+  (or (is-at-night) (is-sunday)))
+
+(defun is-at-company()
+  (not (is-at-home)))
+
+(if (or
+	 (is-at-company)
+	 (is-at-night))
+	(load-theme 'graham t))
+
+;;markdown
+(autoload 'markdown-mode "markdown-mode"
+  "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+;;emacs-nodewebket
+(require 'emacs-nw)
 
 ;; 加载其他脚本
-;(load-file "~/.emacs.d/wdy.el")
+(load-file "~/.emacs.d/wdy/init.el")
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes (quote ("9e009e887a64cffcb6e51946a63562ccbb3b177a8cd285571a5737757793baf5" "f2a626e8b41f12afbf3acc081dde9387b85b80525dbc70e9b61850a774c37e7a" "8a881af89b6790a905bae2f11bb0b93010ebcd010bdc79104087aef77b22d8d7" "1bd275fe57de5a38d0af37590d5094475def5cf352fa5172c2f7c4b5cefb46d3" "b267f390ae9919ae61fd6b9973971585ed71bc069a08196b136fd0389d4bc12b" "ec0f5324cdd147558e44c5ae8c25f6709400bda26280be9bf9474e73ebe36afe" "b3e7a4198593f986274aee39de7b3c888d834aa8a62e13bece63ab71f7054742" "8da4938e0e5754d199ef23087edbddfadf78ecbacbd49b6c766d64296310e3e3" "77d05e0aa0af3321a18aef1a9cea1d12ee0cbc1cfee4c0a1612813469f89e721" default))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
