@@ -260,6 +260,8 @@
 (add-to-list 'load-path "~/.emacs.d/markdown-mode")
 (add-to-list 'load-path "~/.emacs.d/emacs-request")
 (add-to-list 'load-path "~/.emacs.d/emacs-nw")
+(add-to-list 'load-path "~/.emacs.d/highlight-parentheses.el")
+
 
 ;;package
 (require 'package)
@@ -278,7 +280,7 @@
 (ac-config-default)
 
 ;; Ctrl+回车触发
-;(setq ac-auto-start nil) ;auto complete using clang is CPU sensitive
+(setq ac-auto-start nil) ;auto complete using clang is CPU sensitive
 (ac-set-trigger-key "<C-return>")
 ;; backspace的删除后仍旧可以触发ac补全
 (setq ac-trigger-commands
@@ -332,8 +334,11 @@
 ;;emacs-nodewebket
 (require 'emacs-nw)
 
+;;highlight-parentheses.el
+(require 'highlight-parentheses)
+
 ;; 加载其他脚本
-(load-file "~/.emacs.d/wdy/init.el")
+;(load-file "~/.emacs.d/wdy/init.el")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
