@@ -124,10 +124,10 @@
 (if (eq system-type 'windows-nt)(setq file-name-coding-system 'gbk))
 
 ;;默认字体
-(set-default-font "Courier New-12")
+;(set-default-font "Courier New-12")
 
 ;;汉字粘贴乱码的问题
-(set-clipboard-coding-system 'euc-cn)
+;(set-clipboard-coding-system 'euc-cn)
 ;;------------------------基本设置完毕------------------------
 
 ;;------------------------交换右边的Ctrl+Alt------------------
@@ -259,11 +259,10 @@
 (add-to-list 'load-path "~/.emacs.d/yasnippet")
 (add-to-list 'load-path "~/.emacs.d/js2-mode")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(add-to-list 'load-path "~/.emacs.d/markdown-mode")
 (add-to-list 'load-path "~/.emacs.d/emacs-request")
 (add-to-list 'load-path "~/.emacs.d/emacs-nw")
 (add-to-list 'load-path "~/.emacs.d/highlight-parentheses.el")
-
+(add-to-list 'load-path "~/.emacs.d/emacs-eim")
 
 ;;package
 (require 'package)
@@ -273,9 +272,6 @@
 
 
 ;; --------------- 自动完成 -----------------------
-;(add-to-list 'load-path "~/.emacs.d/fuzzy-el")
-;(setq ac-fuzzy-enable t)
-
 ;; auto-complate
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
@@ -326,31 +322,20 @@
 	 (is-at-night))
 	(load-theme 'graham t))
 
-;;markdown
-(autoload 'markdown-mode "markdown-mode"
-  "Major mode for editing Markdown files" t)
-(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-
 ;;emacs-nodewebket
 (require 'emacs-nw)
 
 ;;highlight-parentheses.el
 (require 'highlight-parentheses)
 
+;;---------- 输入法拼音 -----------
+(autoload 'eim-use-package "eim" "Another emacs input method")
+;; Tooltip 暂时还不好用
+(setq eim-use-tooltip t)
+
+(register-input-method
+ "eim-py" "euc-cn" 'eim-use-package
+ "拼音" "汉字拼音输入法" "py.txt")
+
 ;; 加载其他脚本
 ;(load-file "~/.emacs.d/wdy/init.el")
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("9e009e887a64cffcb6e51946a63562ccbb3b177a8cd285571a5737757793baf5" "f2a626e8b41f12afbf3acc081dde9387b85b80525dbc70e9b61850a774c37e7a" "8a881af89b6790a905bae2f11bb0b93010ebcd010bdc79104087aef77b22d8d7" "1bd275fe57de5a38d0af37590d5094475def5cf352fa5172c2f7c4b5cefb46d3" "b267f390ae9919ae61fd6b9973971585ed71bc069a08196b136fd0389d4bc12b" "ec0f5324cdd147558e44c5ae8c25f6709400bda26280be9bf9474e73ebe36afe" "b3e7a4198593f986274aee39de7b3c888d834aa8a62e13bece63ab71f7054742" "8da4938e0e5754d199ef23087edbddfadf78ecbacbd49b6c766d64296310e3e3" "77d05e0aa0af3321a18aef1a9cea1d12ee0cbc1cfee4c0a1612813469f89e721" default))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
