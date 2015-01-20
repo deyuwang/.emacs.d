@@ -2,10 +2,10 @@
 (add-to-list 'load-path "~/.emacs.d")
 
 ;;窗口初始大小
-(setq initial-frame-alist '((top . 0) (left . 100) (width . 120) (height . 38)))
+(setq initial-frame-alist '((top . 0) (left . 0) (width . 80) (height . 37)))
 
 ;;设置打开文件的缺省目录
-;(setq default-directory "d:/")
+(setq default-directory "E:/")
 
 ;;去掉启动欢迎界面
 (setq inhibit-startup-message t)
@@ -72,16 +72,16 @@
 ;;背景颜色; 草绿色
 ;(set-background-color "#CBE8CF")
 
-;;隐藏菜单栏、右侧的滚动条 ;;(menu-bar-mode nil)
-(menu-bar-mode 0)
+;;隐藏菜单栏、右侧的滚动条
+;(menu-bar-mode nil)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 
 ;;buffer 窗口快捷
-
 ;(global-set-key [f10] 'split-window-vertically);F10分割窗口
 ;(global-set-key [f11] 'delete-other-windows);F11 关闭其它窗口
 ;(global-set-key [C-return] 'kill-this-buffer);C-return关闭当前buffer
+
 (global-set-key (kbd "<f5>") 'kmacro-call-macro);播放宏
 (define-key  key-translation-map [f9] (kbd "C-x r l")) ;查看书签
 (define-key  key-translation-map [f10] (kbd "C-x r m")) ;增加书签
@@ -127,12 +127,13 @@
 ;(set-default-font "Courier New-12")
 
 ;;汉字粘贴乱码的问题
-;(set-clipboard-coding-system 'euc-cn)
+(set-clipboard-coding-system 'euc-cn)
+
+;;org-mode
+(setq org-startup-indented t)
 ;;------------------------基本设置完毕------------------------
 
-;;------------------------交换右边的Ctrl+Alt------------------
-; 1. 使用命令xev查看按键名称
-; 2. setxkbmap -option Control_R:Menu
+
 ;;------------------------扩展设置开始------------------------
 ;;透明不透明
 (global-set-key [(f8)] 'loop-alpha)
@@ -259,10 +260,11 @@
 (add-to-list 'load-path "~/.emacs.d/yasnippet")
 (add-to-list 'load-path "~/.emacs.d/js2-mode")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(add-to-list 'load-path "~/.emacs.d/highlight-parentheses.el")
+
+(add-to-list 'load-path "~/.emacs.d/eim")
 (add-to-list 'load-path "~/.emacs.d/emacs-request")
 (add-to-list 'load-path "~/.emacs.d/emacs-nw")
-(add-to-list 'load-path "~/.emacs.d/highlight-parentheses.el")
-(add-to-list 'load-path "~/.emacs.d/emacs-eim")
 
 ;;package
 (require 'package)
@@ -272,6 +274,9 @@
 
 
 ;; --------------- 自动完成 -----------------------
+;(add-to-list 'load-path "~/.emacs.d/fuzzy-el")
+;(setq ac-fuzzy-enable t)
+
 ;; auto-complate
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
@@ -317,12 +322,10 @@
 (defun is-at-company()
   (not (is-at-home)))
 
-(if (or
-	 (is-at-company)
-	 (is-at-night))
+(if (is-at-night)
 	(load-theme 'graham t))
 
-;;emacs-nodewebket
+;;emacs-nodewebketls
 (require 'emacs-nw)
 
 ;;highlight-parentheses.el
@@ -337,5 +340,19 @@
  "eim-py" "euc-cn" 'eim-use-package
  "拼音" "汉字拼音输入法" "py.txt")
 
+
 ;; 加载其他脚本
 ;(load-file "~/.emacs.d/wdy/init.el")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+ '(custom-safe-themes (quote ("730277652b2e8eeb072604bc779a5782f7a4fbc0cf7803c69601b4be8a681d87" default))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
