@@ -1,100 +1,101 @@
-;;------------------------åŸºæœ¬è®¾ç½®å¼€å§‹------------------------
+
+;;------------------------»ù±¾ÉèÖÃ¿ªÊ¼------------------------
 (add-to-list 'load-path "~/.emacs.d")
 
-;;çª—å£åˆå§‹å¤§å°
+;;´°¿Ú³õÊ¼´óĞ¡
 (setq initial-frame-alist '((top . 0) (left . 0) (width . 80) (height . 37)))
 
-;;è®¾ç½®æ‰“å¼€æ–‡ä»¶çš„ç¼ºçœç›®å½•
-(setq default-directory "E:/")
+;;ÉèÖÃ´ò¿ªÎÄ¼şµÄÈ±Ê¡Ä¿Â¼
+;(setq default-directory "E:/")
 
-;;å»æ‰å¯åŠ¨æ¬¢è¿ç•Œé¢
+;;È¥µôÆô¶¯»¶Ó­½çÃæ
 (setq inhibit-startup-message t)
 
-;;Ctrl+é¼ æ ‡æ»šè½®ç¼©æ”¾å­—ä½“
+;;Ctrl+Êó±ê¹öÂÖËõ·Å×ÖÌå
 (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
 (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
 
-;;ä¸è¦æ€»æ˜¯æ²¡å®Œæ²¡äº†çš„é—®yes or no, ä¸ºä»€ä¹ˆä¸èƒ½ç”¨ y/n
+;;²»Òª×ÜÊÇÃ»ÍêÃ»ÁËµÄÎÊyes or no, ÎªÊ²Ã´²»ÄÜÓÃ y/n
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;;æ‰“å¼€é«˜äº® #M-x global-font-lock-mode
+;;´ò¿ª¸ßÁÁ #M-x global-font-lock-mode
 (global-font-lock-mode t)
 
-;;ç¤ºæ‹¬å·åŒ¹é…
+;;Ê¾À¨ºÅÆ¥Åä
 (show-paren-mode t)
 (setq show-paren-style 'parentheses)
 
-;;æ˜¾ç¤ºåˆ—å·
+;;ÏÔÊ¾ÁĞºÅ
 (setq column-number-mode 0)
 ;(setq line-number-mode t)
-;;åœ¨å·¦ä¾§æ˜¾ç¤ºè¡Œå·
+;;ÔÚ×ó²àÏÔÊ¾ĞĞºÅ
 (global-linum-mode 'linum-mode)
 
-;;set mark(è¿›å…¥é€‰æ‹©æ–‡æœ¬æ¨¡å—ï¼‰
+;;set mark(½øÈëÑ¡ÔñÎÄ±¾Ä£¿é£©
 (global-set-key (kbd "M-SPC") 'set-mark-command)
 
-;;å…‰æ ‡é è¿‘é¼ æ ‡çš„æ—¶å€™ï¼Œè®©é¼ æ ‡è‡ªåŠ¨è®©å¼€ï¼Œåˆ«æŒ¡ä½è§†çº¿
+;;¹â±ê¿¿½üÊó±êµÄÊ±ºò£¬ÈÃÊó±ê×Ô¶¯ÈÃ¿ª£¬±ğµ²×¡ÊÓÏß
 ;(mouse-avoidance-mode 'animate)
 
-;;å¹³æ»‘æ»šåŠ¨, åœ¨å…‰æ ‡åœ¨æœ€åä¸€è¡Œçš„æ—¶å€™ï¼Œç»§ç»­ä¸‹ä¸€è¡Œè·³åŠ¨çš„æ—¶å€™ï¼Œæœ‰æ˜æ˜¾çš„è·³åŠ¨æ„Ÿè§‰
+;;Æ½»¬¹ö¶¯, ÔÚ¹â±êÔÚ×îºóÒ»ĞĞµÄÊ±ºò£¬¼ÌĞøÏÂÒ»ĞĞÌø¶¯µÄÊ±ºò£¬ÓĞÃ÷ÏÔµÄÌø¶¯¸Ğ¾õ
 (setq scroll-margin 2 scroll-conservatively 10000)
 
-;;ç¦æ­¢è‡ªåŠ¨ä¿å­˜
+;;½ûÖ¹×Ô¶¯±£´æ
 (auto-save-mode nil)
 
-;;é»˜è®¤æ˜¾ç¤º 80åˆ—å°±æ¢è¡Œ
+;;Ä¬ÈÏÏÔÊ¾ 80ÁĞ¾Í»»ĞĞ
 (setq default-fill-column 80)
 
-;;è®¾ç½®è¡Œé—´è·
+;;ÉèÖÃĞĞ¼ä¾à
 (setq-default line-spacing 2)
 
-;;ä¸è¦ç”Ÿæˆä¸´æ—¶æ–‡ä»¶
+;;²»ÒªÉú³ÉÁÙÊ±ÎÄ¼ş
 (setq-default make-backup-files nil);
 
-;;Ctrl+Z åœ¨çª—å£æ¨¡å¼ä¸‹ä¸æœ€å°åŒ–Eamcs
+;;Ctrl+Z ÔÚ´°¿ÚÄ£Ê½ÏÂ²»×îĞ¡»¯Eamcs
 ;(if (eq window-system 'x) (global-set-key [(control z)] 'suspend-emacs))
 
-;;é«˜äº®æ˜¾ç¤ºå½“å‰è¡Œ
+;;¸ßÁÁÏÔÊ¾µ±Ç°ĞĞ
 ;(global-hl-line-mode)
 
-;;åœ¨ä¸‹é¢æ ä¸­æ˜¾ç¤ºæ—¶é—´
+;;ÔÚÏÂÃæÀ¸ÖĞÏÔÊ¾Ê±¼ä
 (display-time-mode 1)
 
-;;ä½¿ç”¨24å°æ—¶åˆ¶
+;;Ê¹ÓÃ24Ğ¡Ê±ÖÆ
 (setq display-time-24hr-format t)
 
-;;å…‰æ ‡ä¸ºç«–çº¿
+;;¹â±êÎªÊúÏß
 (setq-default cursor-type 'bar)
 
-;;å…‰æ ‡é¢œè‰²
+;;¹â±êÑÕÉ«
 ;(set-cursor-color "green")
 
-;;èƒŒæ™¯é¢œè‰²; è‰ç»¿è‰²
+;;±³¾°ÑÕÉ«; ²İÂÌÉ«
 ;(set-background-color "#CBE8CF")
 
-;;éšè—èœå•æ ã€å³ä¾§çš„æ»šåŠ¨æ¡
+;;Òş²Ø²Ëµ¥À¸¡¢ÓÒ²àµÄ¹ö¶¯Ìõ
 ;(menu-bar-mode nil)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 
-;;buffer çª—å£å¿«æ·
-;(global-set-key [f10] 'split-window-vertically);F10åˆ†å‰²çª—å£
-;(global-set-key [f11] 'delete-other-windows);F11 å…³é—­å…¶å®ƒçª—å£
-;(global-set-key [C-return] 'kill-this-buffer);C-returnå…³é—­å½“å‰buffer
+;;buffer ´°¿Ú¿ì½İ
+;(global-set-key [f10] 'split-window-vertically);F10·Ö¸î´°¿Ú
+;(global-set-key [f11] 'delete-other-windows);F11 ¹Ø±ÕÆäËü´°¿Ú
+;(global-set-key [C-return] 'kill-this-buffer);C-return¹Ø±Õµ±Ç°buffer
 
-(global-set-key (kbd "<f5>") 'kmacro-call-macro);æ’­æ”¾å®
-(define-key  key-translation-map [f9] (kbd "C-x r l")) ;æŸ¥çœ‹ä¹¦ç­¾
-(define-key  key-translation-map [f10] (kbd "C-x r m")) ;å¢åŠ ä¹¦ç­¾
+(global-set-key (kbd "<f5>") 'kmacro-call-macro);²¥·Åºê
+(define-key  key-translation-map [f9] (kbd "C-x r l")) ;²é¿´ÊéÇ©
+(define-key  key-translation-map [f10] (kbd "C-x r m")) ;Ôö¼ÓÊéÇ©
 (define-key  key-translation-map [f11] (kbd "C-x"))
 (define-key  key-translation-map [f12] (kbd "C-c"))
 
 
-;; è®¾ç½®Tabä¸º4ä¸ªå­—ç¬¦
+;; ÉèÖÃTabÎª4¸ö×Ö·û
 (setq indent-tabs-mode nil)
 (setq default-tab-width 4)
 (setq tab-width 4)
 
-;;Emacsé¡¶éƒ¨æ ‡é¢˜æ æ˜¾ç¤ºå®Œæ•´æ–‡ä»¶å
+;;Emacs¶¥²¿±êÌâÀ¸ÏÔÊ¾ÍêÕûÎÄ¼şÃû
 ;(setq frame-title-format " %b")
 (defun frame-title-string ()
   "Return the file name of current buffer, using ~ if under home directory"
@@ -106,36 +107,8 @@
 	fname))
 (setq frame-title-format '("" system-name "  File: "(:eval (frame-title-string))))
 
-;;-è¯­è¨€ç¯å¢ƒå­—ç¬¦é›†è®¾ç½®(utf-8)-
-(set-language-environment 'Chinese-GB)
-(set-keyboard-coding-system 'utf-8)
-(set-clipboard-coding-system 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-buffer-file-coding-system 'utf-8)
-(set-default-coding-systems 'utf-8)
-(set-selection-coding-system 'utf-8)
-(modify-coding-system-alist 'process "*" 'utf-8)
-(setq default-process-coding-system '(utf-8 . utf-8))
-(setq-default pathname-coding-system 'utf-8)
-(set-file-name-coding-system 'utf-8)
-(setq ansi-color-for-comint-mode t)
-(setq file-name-coding-system 'utf-8)
-(setq path-name-coding-system 'utf-8)
-(if (eq system-type 'windows-nt)(setq file-name-coding-system 'gbk))
-
-;;é»˜è®¤å­—ä½“
-;(set-default-font "Courier New-12")
-
-;;æ±‰å­—ç²˜è´´ä¹±ç çš„é—®é¢˜
-(set-clipboard-coding-system 'euc-cn)
-
-;;org-mode
-(setq org-startup-indented t)
-;;------------------------åŸºæœ¬è®¾ç½®å®Œæ¯•------------------------
-
-
-;;------------------------æ‰©å±•è®¾ç½®å¼€å§‹------------------------
-;;é€æ˜ä¸é€æ˜
+;;------------------------À©Õ¹ÉèÖÃ¿ªÊ¼------------------------
+;;Í¸Ã÷²»Í¸Ã÷
 (global-set-key [(f8)] 'loop-alpha)
 (setq alpha-list '((88 55) (100 100)))
 
@@ -148,7 +121,7 @@
        ) (car h) (car (cdr h)))
     (setq alpha-list (cdr (append alpha-list (list h))))))
 
-;; åœ¨å½“å‰æ‰€æœ‰æ‰“å¼€çš„bufferä¸­æ›¿æ¢å­—ç¬¦ä¸²-
+;; ÔÚµ±Ç°ËùÓĞ´ò¿ªµÄbufferÖĞÌæ»»×Ö·û´®-
 (defun query-replace-regexp-in-open-buffers (arg1 arg2)
   "query-replace in all open files"
   (interactive "sRegexp:\nsReplace with:")
@@ -165,7 +138,7 @@
        (buffer-file-name x))
      (buffer-list)))))
 
-;; åœ¨å½“å‰æ‰€æœ‰æ‰“å¼€çš„bufferä¸­æ›¿æ¢å­—ç¬¦ä¸²
+;; ÔÚµ±Ç°ËùÓĞ´ò¿ªµÄbufferÖĞÌæ»»×Ö·û´®
 (defun query-replace-in-open-buffers (arg1 arg2)
   "query-replace in all open files"
   (interactive "sRegexp:\nsReplace with:")
@@ -182,8 +155,8 @@
        (buffer-file-name x))
      (buffer-list)))))
 
-;;----- æ–‡æœ¬è¡Œæ“ä½œ-å¼€å§‹---------
-;;Alt+ä¸Šä¸‹é”®ï¼Œç§»åŠ¨ä¸€è¡Œå†…å®¹
+;;----- ÎÄ±¾ĞĞ²Ù×÷-¿ªÊ¼---------
+;;Alt+ÉÏÏÂ¼ü£¬ÒÆ¶¯Ò»ĞĞÄÚÈİ
 ;;move line up down
 (defun move-text-internal (arg)
   (cond
@@ -221,7 +194,7 @@
 (global-set-key [M-up] 'move-text-up)
 (global-set-key [M-down] 'move-text-down)
 
-;;Alt+w å¤åˆ¶å…‰æ ‡æ‰€åœ¨ä¸€æ•´è¡Œï¼ŒAlt+kï¼Œå¤åˆ¶å½“å‰è¡Œå…‰æ ‡åé¢çš„å†…å®¹
+;;Alt+w ¸´ÖÆ¹â±êËùÔÚÒ»ÕûĞĞ£¬Alt+k£¬¸´ÖÆµ±Ç°ĞĞ¹â±êºóÃæµÄÄÚÈİ
 ;; Smart copy, if no region active, it simply copy the current whole line
 (defadvice kill-line
   (before check-position activate)
@@ -247,13 +220,13 @@
   (kill-ring-save (point) (line-end-position))
   (line-beginning-position (+ 1 arg)))
 (global-set-key (kbd "M-k") 'qiang-copy-line)
-;;----- æ–‡æœ¬è¡Œæ“ä½œ-ç»“æŸ---------
+;;----- ÎÄ±¾ĞĞ²Ù×÷-½áÊø---------
 
-;;--------------------æ‰©å±•è®¾ç½®ç»“æŸ---------------
+;;--------------------À©Õ¹ÉèÖÃ½áÊø---------------
 
 
 
-;;------------------- ç¬¬ä¸‰æ–¹åŒ…å¼€å§‹ --------------
+;;------------------- µÚÈı·½°ü¿ªÊ¼ --------------
 (add-to-list 'load-path "~/.emacs.d/cl-lib")
 (add-to-list 'load-path "~/.emacs.d/auto-complete")
 (add-to-list 'load-path "~/.emacs.d/popup-el")
@@ -261,8 +234,6 @@
 (add-to-list 'load-path "~/.emacs.d/js2-mode")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 (add-to-list 'load-path "~/.emacs.d/highlight-parentheses.el")
-
-(add-to-list 'load-path "~/.emacs.d/eim")
 (add-to-list 'load-path "~/.emacs.d/emacs-request")
 (add-to-list 'load-path "~/.emacs.d/emacs-nw")
 
@@ -273,23 +244,21 @@
 (package-initialize)
 
 
-;; --------------- è‡ªåŠ¨å®Œæˆ -----------------------
-;(add-to-list 'load-path "~/.emacs.d/fuzzy-el")
-;(setq ac-fuzzy-enable t)
+;; --------------- ×Ô¶¯Íê³É -----------------------
 
 ;; auto-complate
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
 (ac-config-default)
 
-;; Ctrl+å›è½¦è§¦å‘
+;; Ctrl+»Ø³µ´¥·¢
 (setq ac-auto-start nil) ;auto complete using clang is CPU sensitive
 (ac-set-trigger-key "<C-return>")
-;; backspaceçš„åˆ é™¤åä»æ—§å¯ä»¥è§¦å‘acè¡¥å…¨
+;; backspaceµÄÉ¾³ıºóÈÔ¾É¿ÉÒÔ´¥·¢ac²¹È«
 (setq ac-trigger-commands
       (cons 'backward-delete-char-untabify ac-trigger-commands))
 
-;; -------------- æ–‡æœ¬æ¨¡æ¿ --------------------
+;; -------------- ÎÄ±¾Ä£°å --------------------
 (require 'yasnippet)
 (yas-global-mode 1)
 (add-hook 'prog-mode-hook
@@ -306,18 +275,18 @@
 
 ;;theme
 ;(load-theme 'graham t)
-;å¤œæ™šæˆ–è€…åœ¨å…¬å¸çš„æ—¶å€™ä½¿ç”¨æš—è‰²èƒŒæ™¯
+;Ò¹Íí»òÕßÔÚ¹«Ë¾µÄÊ±ºòÊ¹ÓÃ°µÉ«±³¾°
 (defun get-hour ()
   (string-to-int (format-time-string "%H" (current-time))))
 
 (defun is-at-night ()
   (> (get-hour) 19))
 
-(defun is-sunday ()
+(defun is-weekend ()
   (> (string-to-int (format-time-string "%u" (current-time))) 5 ))
 
 (defun is-at-home ()
-  (or (is-at-night) (is-sunday)))
+  (or (is-at-night) (is-weekend)))
 
 (defun is-at-company()
   (not (is-at-home)))
@@ -331,18 +300,9 @@
 ;;highlight-parentheses.el
 (require 'highlight-parentheses)
 
-;;---------- è¾“å…¥æ³•æ‹¼éŸ³ -----------
-(autoload 'eim-use-package "eim" "Another emacs input method")
-;; Tooltip æš‚æ—¶è¿˜ä¸å¥½ç”¨
-(setq eim-use-tooltip t)
+;; ¼ÓÔØ×Ô¼ºµÄÆäËû½Å±¾
+(load-file "~/.emacs.d/wdy/init.el")
 
-(register-input-method
- "eim-py" "euc-cn" 'eim-use-package
- "æ‹¼éŸ³" "æ±‰å­—æ‹¼éŸ³è¾“å…¥æ³•" "py.txt")
-
-
-;; åŠ è½½å…¶ä»–è„šæœ¬
-;(load-file "~/.emacs.d/wdy/init.el")
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
