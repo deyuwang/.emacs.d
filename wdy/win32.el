@@ -19,7 +19,7 @@
 ;(if (eq system-type 'windows-nt) (setq file-name-coding-system 'gbk))
 
 ;;默认字体
-;(set-default-font "Courier New-12")
+(set-default-font "Courier New-12")
 
 ;;汉字粘贴乱码的问题
 ;(set-clipboard-coding-system 'euc-cn)
