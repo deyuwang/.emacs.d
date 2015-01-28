@@ -1,4 +1,10 @@
 
+
+
+;;µ¼³ö³Élaxt£¬Ìæ»»
+;\documentclass{ctexart}
+
+
 (add-hook 'speedbar-mode-hook
           '(lambda ()
              (message "Hello")))

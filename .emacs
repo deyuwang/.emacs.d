@@ -79,15 +79,14 @@
 (scroll-bar-mode 0)
 
 ;; 开启ido-mode
-(setq ido-enable-flex-matching t)
-(setq ido-use-filename-at-point 'guess)
-(setq ido-everywhere t)
+;(setq ido-enable-flex-matching t)
+;(setq ido-use-filename-at-point 'guess)
+;(setq ido-everywhere t)
 (ido-mode 1)
 
 ;;buffer 窗口快捷
-;(global-set-key [f10] 'split-window-vertically);F10分割窗口
-;(global-set-key [f11] 'delete-other-windows);F11 关闭其它窗口
-;(global-set-key [C-return] 'kill-this-buffer);C-return关闭当前buffer
+;(global-set-key [] 'delete-other-windows);F11 关闭其它窗口
+;(global-set-key [] 'kill-this-buffer);关闭当前buffe
 
 (global-set-key (kbd "<f5>") 'kmacro-call-macro);播放宏
 (define-key  key-translation-map [f9] (kbd "C-x r l")) ;查看书签
@@ -95,6 +94,12 @@
 (define-key  key-translation-map [f11] (kbd "C-x"))
 (define-key  key-translation-map [f12] (kbd "C-c"))
 
+;; 光标所在行不变，上下滚动
+(global-set-key "\M-p" '(lambda () (interactive) (scroll-down 1)))
+(global-set-key "\M-n" '(lambda () (interactive) (scroll-up 1)))
+
+;; 回车 改成回车并缩进
+(global-set-key (kbd "RET") 'newline-and-indent)
 
 ;; 设置Tab为4个字符
 (setq indent-tabs-mode nil)
@@ -256,6 +261,12 @@
 
 ;;--------------------扩展设置结束---------------
 
+;;package
+(require 'package)
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+(package-initialize)
 
 
 ;;------------------- 第三方包开始 --------------
@@ -270,12 +281,6 @@
 (add-to-list 'load-path "~/.emacs.d/emacs-request")
 (add-to-list 'load-path "~/.emacs.d/emacs-nw")
 
-;;package
-(require 'package)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
-(package-initialize)
 
 
 ;; --------------- 自动完成 -----------------------
@@ -382,15 +387,7 @@
 
 (setq make-backup-files t)
 (menu-bar-mode t)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("9e009e887a64cffcb6e51946a63562ccbb3b177a8cd285571a5737757793baf5" "1bd275fe57de5a38d0af37590d5094475def5cf352fa5172c2f7c4b5cefb46d3" default))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
+;; customization
+(setq custom-file "~/.emacs.d/custom.el")
+(load "~/.emacs.d/custom" t)
