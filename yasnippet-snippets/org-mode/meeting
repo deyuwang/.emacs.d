@@ -1,0 +1,12 @@
+﻿# -*- mode: snippet -*-
+# name: meeting
+# key: meeting
+# --
+* 会议
+** 参会人员
+$1
+** 会议主题
+$2
+* 问题列表
+$0
+* 结论

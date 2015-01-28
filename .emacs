@@ -1,9 +1,8 @@
-
 ;;------------------------基本设置开始------------------------
 (add-to-list 'load-path "~/.emacs.d")
 
 ;;窗口初始大小
-(setq initial-frame-alist '((top . 0) (left . 0) (width . 80) (height . 37)))
+;(setq initial-frame-alist '((top . 0) (left . 0) (width . 80) (height . 37)))
 
 ;;设置打开文件的缺省目录
 ;(setq default-directory "E:/")
@@ -26,8 +25,8 @@
 (setq show-paren-style 'parentheses)
 
 ;;显示列号
-(setq column-number-mode 0)
-;(setq line-number-mode t)
+(setq column-number-mode t)
+;;(setq line-number-mode nil)
 ;;在左侧显示行号
 (global-linum-mode 'linum-mode)
 
@@ -41,13 +40,14 @@
 (setq scroll-margin 2 scroll-conservatively 10000)
 
 ;;禁止自动保存
-(auto-save-mode nil)
+;;(auto-save-mode t)
+
 
 ;;默认显示 80列就换行
-(setq default-fill-column 80)
+;(setq default-fill-column 80)
 
 ;;设置行间距
-(setq-default line-spacing 2)
+;(setq-default line-spacing 2)
 
 ;;不要生成临时文件
 (setq-default make-backup-files nil);
@@ -74,9 +74,15 @@
 ;(set-background-color "#CBE8CF")
 
 ;;隐藏菜单栏、右侧的滚动条
-;(menu-bar-mode nil)
+(menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
+
+;; 开启ido-mode
+(setq ido-enable-flex-matching t)
+(setq ido-use-filename-at-point 'guess)
+(setq ido-everywhere t)
+(ido-mode 1)
 
 ;;buffer 窗口快捷
 ;(global-set-key [f10] 'split-window-vertically);F10分割窗口
@@ -107,6 +113,23 @@
 	fname))
 (setq frame-title-format '("" system-name "  File: "(:eval (frame-title-string))))
 
+
+;; 可以补全各种内容
+(global-set-key [(meta ?/)] 'hippie-expand)
+(setq hippie-expand-try-functions-list
+	  '(try-expand-line
+		try-expand-line-all-buffers
+		try-expand-list
+		try-expand-list-all-buffers
+		try-expand-dabbrev
+		try-expand-dabbrev-visible
+		try-expand-dabbrev-all-buffers
+		try-expand-dabbrev-from-kill
+		try-complete-file-name
+		try-complete-file-name-partially
+		try-complete-lisp-symbol
+		try-complete-lisp-symbol-partially
+		try-expand-whole-kill))
 ;;------------------------扩展设置开始------------------------
 ;;透明不透明
 (global-set-key [(f8)] 'loop-alpha)
@@ -117,8 +140,7 @@
   (let ((h (car alpha-list)))
     ((lambda (a ab)
        (set-frame-parameter (selected-frame) 'alpha (list a ab))
-       (add-to-list 'default-frame-alist (cons 'alpha (list a ab)))
-       ) (car h) (car (cdr h)))
+       (add-to-list 'default-frame-alist (cons 'alpha (list a ab)))) (car h) (car (cdr h)))
     (setq alpha-list (cdr (append alpha-list (list h))))))
 
 ;; 在当前所有打开的buffer中替换字符串-
@@ -220,6 +242,16 @@
   (kill-ring-save (point) (line-end-position))
   (line-beginning-position (+ 1 arg)))
 (global-set-key (kbd "M-k") 'qiang-copy-line)
+
+;; Alt+;注释、反注释
+(defun qiang-comment-dwim-line (&optional arg)
+  "Replacement for the comment-dwim command. If no region is selected and current line is not blank and we are not at the end of the line, then comment current line. Replaces default behaviour of comment-dwim, when it inserts comment at the end of the line."
+  (interactive "*P")
+  (comment-normalize-vars)
+  (if (and (not (region-active-p)) (not (looking-at "[ \t]*$")))
+      (comment-or-uncomment-region (line-beginning-position) (line-end-position))
+    (comment-dwim arg)))
+(global-set-key "\M-;" 'qiang-comment-dwim-line)
 ;;----- 文本行操作-结束---------
 
 ;;--------------------扩展设置结束---------------
@@ -227,6 +259,7 @@
 
 
 ;;------------------- 第三方包开始 --------------
+(add-to-list 'load-path "~/.emacs.d/single-el")
 (add-to-list 'load-path "~/.emacs.d/cl-lib")
 (add-to-list 'load-path "~/.emacs.d/auto-complete")
 (add-to-list 'load-path "~/.emacs.d/popup-el")
@@ -239,8 +272,9 @@
 
 ;;package
 (require 'package)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
 (package-initialize)
 
 
@@ -280,7 +314,8 @@
   (string-to-int (format-time-string "%H" (current-time))))
 
 (defun is-at-night ()
-  (> (get-hour) 19))
+  (or (< (get-hour) 5)
+	   (> (get-hour) 19)))
 
 (defun is-weekend ()
   (> (string-to-int (format-time-string "%u" (current-time))) 5 ))
@@ -292,7 +327,8 @@
   (not (is-at-home)))
 
 (if (is-at-night)
-	(load-theme 'graham t))
+;	(load-theme 'graham t))
+	(load-theme 'deeper-blue t))
 
 ;;emacs-nodewebketls
 (require 'emacs-nw)
@@ -300,16 +336,58 @@
 ;;highlight-parentheses.el
 (require 'highlight-parentheses)
 
+;;sr-speedbar
+(require 'sr-speedbar)
+;; 不使用图标  
+(setq speedbar-use-images nil)    
+;; speedbar的宽度  
+(setq sr-speedbar-width 22) 
+;; 放到左边去  
+(setq sr-speedbar-right-side nil) 
+(global-set-key (kbd "<f7>") (lambda()    
+                               (interactive)    
+                               (sr-speedbar-toggle)))
+;(add-hook 'after-init-hook '(lambda () (sr-speedbar-toggle)));;开启程序即启用
+
+;;youdao
+(require 'youdao)
+(setf youdao-key-from "mysite123") 
+(setf youdao-key "1212400033")
+(global-set-key (kbd "C-c C-v") 'youdao-translate-word)
+
+
 ;; 加载自己的其他脚本
 (load-file "~/.emacs.d/wdy/init.el")
 
+;;hide region
+(require 'hide-region)
+(global-set-key (kbd "C-c r") 'hide-region-hide)
+(global-set-key (kbd "C-c R") 'hide-region-unhide)
+
+
+;; hide lines
+(require 'hide-lines)
+(global-set-key (kbd "C-c l") 'hide-lines)
+(global-set-key (kbd "C-c L") 'show-all-invisible)
+
+;;自动备份
+(setq
+ backup-by-copying t ; 自动备份
+ backup-directory-alist '(("." . "~/.emacs.d/auto-save-list")) ; 自动备份在目录"~/.emacs.d/auto-save-list"下
+ delete-old-versions t ; 自动删除旧的备份文件
+ kept-new-versions 6 ; 保留最近的6个备份文件
+ kept-old-versions 2 ; 保留最早的2个备份文件(前两个是最早的，后4个是最近的)
+ version-control t ; 多次备
+ vc-make-backup-files t); 有版本控制也做备份
+
+(setq make-backup-files t)
+(menu-bar-mode t)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
- '(custom-safe-themes (quote ("730277652b2e8eeb072604bc779a5782f7a4fbc0cf7803c69601b4be8a681d87" default))))
+ '(custom-safe-themes (quote ("9e009e887a64cffcb6e51946a63562ccbb3b177a8cd285571a5737757793baf5" "1bd275fe57de5a38d0af37590d5094475def5cf352fa5172c2f7c4b5cefb46d3" default))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

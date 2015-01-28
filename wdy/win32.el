@@ -27,3 +27,5 @@
 ;;Tramp 远程(依赖plink.exe在当前path可访问)
 (require 'tramp) 
 (setq tramp-default-method "plink")
+
+(setq default-directory "e:/workspace/")

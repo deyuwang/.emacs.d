@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: init
+# key: init
+# --
+#+TITLE:       $1
+#+AUTHOR:      $2
+#+DATE:        $3
+#+EMAIL:       $4@$5.com
+#+DESCRIPTION: $6
+#+KEYWORDS:    $7
+#+TEXT:        
+#+TEXT:        
+
+$0

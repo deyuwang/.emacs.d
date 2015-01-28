@@ -1,6 +1,37 @@
 
+(add-hook 'speedbar-mode-hook
+          '(lambda ()
+             (message "Hello")))
 
 ;;学习Elisp用
+
+(define-prefix-command '存-map)
+(global-set-key (kbd "存") '存-map)
+(define-key 存-map (kbd "盘") 'save-buffer)
+
+(define-prefix-command '提-map)
+(global-set-key (kbd "提") '提-map)
+(define-key 存-map (kbd "交") 'save-buffer)
+
+
+;绑定中文命令
+;现在我举一个例子来说明 prefix command 是如何工作的。我们可以 把中文的 存盘 两个字绑定到save-buffer. 这样你用中文输入法 敲入“存盘”两个字时，就可以把当前 buffer 保存起来。
+(define-prefix-command '存-map)
+(global-set-key (kbd "存") '存-map)
+(define-key 存-map (kbd "盘") 'save-buffer)
+;有趣吧？你可以猜到这里面是怎么回事吧？太简单了是不是？当你输 入“存”的时候，看到 minibuffer 是这样：
+;../images/bind-cun.png
+;这是因为我们把“存”这个字绑定到了 存-map 这个 prefix-command. 当读到“存”的时候，Emacs 就会等待下一条命令， 这个命令是定义在 存-map 这个 map 里的。它读到“盘”，就会执 行 save-buffer 了。
+;不过注意，你真的要在文档里输入“存盘”两个字就得先打 C-q 了。 刚才我就打了好多次 C-q，真累啊。还是用一些不常用的词组比较好， 或者加一个 ctrl 什么的前缀，就像这个，"C-z 存盘"。
+(define-prefix-command 'ctl-z-map)
+(global-set-key (kbd "C-z") 'ctl-z-map)
+(define-key ctl-z-map (kbd "存盘") 'save-buffer)
+
+;看我们更 bt 一点:
+(define-prefix-command 'ctl-z-map)
+(global-set-key (kbd "C-z") 'ctl-z-map)
+(define-key ctl-z-map (kbd "给我存盘啦！") 'save-buffer)
+;嗨哟！yes sir!!
 
 (defun loop-alpha ()
   (interactive)
@@ -112,3 +143,13 @@
 (global-set-key (kbd "M-k") 'qiang-copy-line)
 
 
+
+
+;; Insert a file and convert it to an org table
+(defun aleblanc/insert-file-as-org-table (filename)
+  "Insert a file into the current buffer at point, and convert it to an org table."
+  (interactive (list (ido-read-file-name "csv file: ")))
+  (let* ((start (point))
+    (end (+ start (nth 1 (insert-file-contents filename)))))
+    (org-table-convert-region start end)
+    ))
