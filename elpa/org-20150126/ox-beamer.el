@@ -36,7 +36,7 @@
 (unless (assoc "beamer" org-latex-classes)
   (add-to-list 'org-latex-classes
 	       '("beamer"
-		 "\\documentclass[presentation]{beamer}"
+		 "\\documentclass[presentation]{beamer} \n\\usepackage{CJK}"
 		 ("\\section{%s}" . "\\section*{%s}")
 		 ("\\subsection{%s}" . "\\subsection*{%s}")
 		 ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))))
@@ -861,13 +861,13 @@ holding export options."
      (format "\\title{%s}\n" title)
      ;; 8. Hyperref options.
      (when (plist-get info :latex-hyperref-p)
-       (format "\\hypersetup{\n  pdfkeywords={%s},\n  pdfsubject={%s},\n  pdfcreator={%s}}\n"
+       (format "\\hypersetup{\n  CJKbookmarks=true,\n  pdfkeywords={%s},\n  pdfsubject={%s},\n  pdfcreator={%s}}\n"
 	       (or (plist-get info :keywords) "")
 	       (or (plist-get info :description) "")
 	       (if (not (plist-get info :with-creator)) ""
 		 (plist-get info :creator))))
      ;; 9. Document start.
-     "\\begin{document}\n\n"
+     "\\begin{document}\n\n\\begin{CJK*}{GBK}{song}\n"
      ;; 10. Title command.
      (org-element-normalize-string
       (cond ((string= "" title) nil)
@@ -898,7 +898,7 @@ holding export options."
 	 (format "%% %s\n" (plist-get info :creator)))
 	(t (concat (plist-get info :creator) "\n"))))
      ;; 14. Document end.
-     "\\end{document}")))
+     "\\end{CJK*} \n\\end{document}")))
 
 
 

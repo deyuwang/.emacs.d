@@ -188,7 +188,7 @@
 
 (defcustom org-latex-classes
   '(("article"
-     "\\documentclass[11pt]{article}"
+	 "\\documentclass[11pt]{article}\n\\usepackage{CJK}"
      ("\\section{%s}" . "\\section*{%s}")
      ("\\subsection{%s}" . "\\subsection*{%s}")
      ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
@@ -1121,13 +1121,13 @@ holding export options."
      (format "\\title{%s}\n" title)
      ;; Hyperref options.
      (when (plist-get info :latex-hyperref-p)
-       (format "\\hypersetup{\n  pdfkeywords={%s},\n  pdfsubject={%s},\n  pdfcreator={%s}}\n"
+       (format "\\hypersetup{\n CJKbookmarks=true,\n pdfkeywords={%s},\n  pdfsubject={%s},\n  pdfcreator={%s}}\n"
 	       (or (plist-get info :keywords) "")
 	       (or (plist-get info :description) "")
 	       (if (not (plist-get info :with-creator)) ""
 		 (plist-get info :creator))))
      ;; Document start.
-     "\\begin{document}\n\n"
+     "\\begin{document}\n\\begin{CJK*}{GBK}{song}\n\n"
      ;; Title command.
      (org-element-normalize-string
       (cond ((string= "" title) nil)
@@ -1152,7 +1152,7 @@ holding export options."
 	 (format "%% %s\n" (plist-get info :creator)))
 	(t (concat (plist-get info :creator) "\n"))))
      ;; Document end.
-     "\\end{document}")))
+     "\n\n\\end{CJK*}\n\\end{document}")))
 
 
 

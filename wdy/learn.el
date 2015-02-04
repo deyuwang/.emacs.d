@@ -159,3 +159,32 @@
     (end (+ start (nth 1 (insert-file-contents filename)))))
     (org-table-convert-region start end)
     ))
+
+
+;;org-mode导出PDF
+修改
+\documentclass{ctexart}
+\hypersetup{
+    CJKbookmarks=true, //增加这么一行
+书签乱码：gbk2uni 
+
+org-mode的中文Beamer幻灯片模板
+http://www.douban.com/note/270383500/
+中文:
+http://hahack.tk/org-beamer-cn/
+
+;; org-mode导出PDF中文问题（article/beamer)
+修改：ox-beamer.el、ox-latex.el
+
+\documentclass
+\usepackage{CJK} 插入该行
+
+\hypersetup{
+CJKbookmarks=true, 插入该行
+ pdfkeywords={},
+
+\begin{document}
+\begin{CJK*}{GBK}{song}插入一行：
+
+\end{CJK*} 插入一行
+\end{document}
