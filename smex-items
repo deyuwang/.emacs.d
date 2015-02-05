@@ -1,0 +1,19 @@
+
+;; ----- smex-history -----
+(
+ window-numbering-mode
+ 5x5
+ ido-everywhere
+ cd
+ arp
+ dbx
+ dig
+)
+
+;; ----- smex-data -----
+(
+ (org-freemind-show . 1)
+ (window-numbering-mode . 18)
+ (ido-everywhere . 1)
+ (5x5 . 2)
+)

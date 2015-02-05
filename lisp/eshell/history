@@ -1,0 +1,16 @@
+ls
+ls
+pwd
+ls
+cd workspace/
+ls
+cd workspace/
+ls
+cd nodejs/
+ls
+ls
+ls
+ls
+cd ../../
+grunt
+grunt watch
