@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ set-input-method
  find-file
  vi-mode
  load-theme
  byte-compile-file
  kill-this-buffer
  kill-buffer
- delete-other-frames
 )
 
 ;; ----- smex-data -----
@@ -29,4 +29,6 @@
  (kill-this-buffer . 1)
  (vi-mode . 10)
  (find-file . 2)
+ (run-doc-server . 1)
+ (set-input-method . 1)
 )
