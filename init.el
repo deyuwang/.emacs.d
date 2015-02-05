@@ -1,8 +1,8 @@
 ;;------------------------基本设置开始------------------------
-(add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 
 ;;窗口初始大小
-;(setq initial-frame-alist '((top . 0) (left . 0) (width . 80) (height . 37)))
+(setq initial-frame-alist '((top . 0) (left . 0) (width . 80) (height . 37)))
 
 ;;设置打开文件的缺省目录
 ;(setq default-directory "E:/")
@@ -79,20 +79,21 @@
 (scroll-bar-mode 0)
 
 ;; 开启ido-mode
-;(setq ido-enable-flex-matching t)
-;(setq ido-use-filename-at-point 'guess)
-;(setq ido-everywhere t)
+(setq ido-enable-flex-matching t)
+(setq ido-use-filename-at-point 'guess)
+(setq ido-everywhere t)
 (ido-mode 1)
 
 ;;buffer 窗口快捷
-;(global-set-key [] 'delete-other-windows);F11 关闭其它窗口
-;(global-set-key [] 'kill-this-buffer);关闭当前buffe
+;;(global-set-key [F12] 'delete-other-windows);关闭其它窗口
+(global-set-key "\M-9" 'kill-this-buffer);关闭当前buffe
+(global-set-key "\M-0" 'delete-window); 关闭窗口
 
 (global-set-key (kbd "<f5>") 'kmacro-call-macro);播放宏
 (define-key  key-translation-map [f9] (kbd "C-x r l")) ;查看书签
 (define-key  key-translation-map [f10] (kbd "C-x r m")) ;增加书签
-(define-key  key-translation-map [f11] (kbd "C-x"))
-(define-key  key-translation-map [f12] (kbd "C-c"))
+;(define-key  key-translation-map [f11] (kbd "C-x"))
+(define-key  key-translation-map [f12] (kbd "C-x"))
 
 ;; 光标所在行不变，上下滚动
 (global-set-key "\M-p" '(lambda () (interactive) (scroll-down 1)))
@@ -270,16 +271,16 @@
 
 
 ;;------------------- 第三方包开始 --------------
-(add-to-list 'load-path "~/.emacs.d/single-el")
-(add-to-list 'load-path "~/.emacs.d/cl-lib")
-(add-to-list 'load-path "~/.emacs.d/auto-complete")
-(add-to-list 'load-path "~/.emacs.d/popup-el")
-(add-to-list 'load-path "~/.emacs.d/yasnippet")
-(add-to-list 'load-path "~/.emacs.d/js2-mode")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(add-to-list 'load-path "~/.emacs.d/highlight-parentheses.el")
-(add-to-list 'load-path "~/.emacs.d/emacs-request")
-(add-to-list 'load-path "~/.emacs.d/emacs-nw")
+(add-to-list 'load-path "~/.emacs.d/lisp/single-el")
+(add-to-list 'load-path "~/.emacs.d/lisp/cl-lib")
+(add-to-list 'load-path "~/.emacs.d/lisp/auto-complete")
+(add-to-list 'load-path "~/.emacs.d/lisp/popup-el")
+(add-to-list 'load-path "~/.emacs.d/lisp/yasnippet")
+(add-to-list 'load-path "~/.emacs.d/lisp/js2-mode")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/lisp/themes")
+(add-to-list 'load-path "~/.emacs.d/lisp/highlight-parentheses.el")
+(add-to-list 'load-path "~/.emacs.d/lisp/emacs-request")
+(add-to-list 'load-path "~/.emacs.d/lisp/emacs-nw")
 
 
 
@@ -287,12 +288,12 @@
 
 ;; auto-complate
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/auto-complete/ac-dict")
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/lisp/auto-complete/ac-dict")
 (ac-config-default)
 
 ;; Ctrl+回车触发
-(setq ac-auto-start nil) ;auto complete using clang is CPU sensitive
-(ac-set-trigger-key "<C-return>")
+;(setq ac-auto-start nil) ;auto complete using clang is CPU sensitive
+;(ac-set-trigger-key "<C-return>")
 ;; backspace的删除后仍旧可以触发ac补全
 (setq ac-trigger-commands
       (cons 'backward-delete-char-untabify ac-trigger-commands))
@@ -304,7 +305,7 @@
           '(lambda ()
              (yas-minor-mode)))
 
-(add-to-list 'yas/root-directory "~/.emacs.d/yasnippet-snippets")
+(add-to-list 'yas/root-directory "~/.emacs.d/lisp/yasnippet-snippets")
 (yas/initialize)
 
 
@@ -320,7 +321,7 @@
 
 (defun is-at-night ()
   (or (< (get-hour) 5)
-	   (> (get-hour) 19)))
+	  (>= (get-hour) 19)))
 
 (defun is-weekend ()
   (> (string-to-int (format-time-string "%u" (current-time))) 5 ))
@@ -346,7 +347,7 @@
 ;; 不使用图标  
 (setq speedbar-use-images nil)    
 ;; speedbar的宽度  
-(setq sr-speedbar-width 22) 
+(setq sr-speedbar-width 25) 
 ;; 放到左边去  
 (setq sr-speedbar-right-side nil) 
 (global-set-key (kbd "<f7>") (lambda()    
@@ -386,8 +387,24 @@
  vc-make-backup-files t); 有版本控制也做备份
 
 (setq make-backup-files t)
-(menu-bar-mode t)
 
 ;; customization
-(setq custom-file "~/.emacs.d/custom.el")
-(load "~/.emacs.d/custom" t)
+(setq custom-file "~/.emacs.d/lisp/custom.el")
+(load "~/.emacs.d/lisp/custom" t)
+
+
+;; window-switch
+(require 'window-numbering)
+(setq window-numbering-assign-func
+      (lambda () (when (equal (buffer-name) "*Calculator*") 9)))
+(window-numbering-mode)
+
+;; smex
+(require 'smex)
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;;old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+(provide 'init)

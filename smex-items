@@ -1,19 +1,32 @@
 
 ;; ----- smex-history -----
 (
- window-numbering-mode
- 5x5
- ido-everywhere
- cd
- arp
- dbx
- dig
+ find-file
+ vi-mode
+ load-theme
+ byte-compile-file
+ kill-this-buffer
+ kill-buffer
+ delete-other-frames
 )
 
 ;; ----- smex-data -----
 (
  (org-freemind-show . 1)
- (window-numbering-mode . 18)
+ (window-numbering-mode . 22)
  (ido-everywhere . 1)
- (5x5 . 2)
+ (5x5 . 3)
+ (hide-lines . 1)
+ (shell . 1)
+ (eshell . 1)
+ (goto-line . 2)
+ (byte-compile-file . 12)
+ (kill-buffer . 2)
+ (load-theme . 7)
+ (comment-box . 1)
+ (menu-bar-mode . 2)
+ (delete-other-frames . 2)
+ (kill-this-buffer . 1)
+ (vi-mode . 10)
+ (find-file . 2)
 )
