@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: closure
-# key: cf
-# --
-(function($1){
-	$0
-})($2);

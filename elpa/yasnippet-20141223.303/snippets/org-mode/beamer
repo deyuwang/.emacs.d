@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: beamer
+# key: beamer
+# --
+#+OPTIONS: H:2
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [presentation]
+#+BEAMER_THEME: marburg
+#+BEAMER_COLOR_THEME: default
+#+COLUMNS: %45ITEM %10BEAMER_ENV(Env) %10BEAMER_ACT(Act) %4BEAMER_COL(Col) %8BEAMER_OPT(Opt)
+$0
