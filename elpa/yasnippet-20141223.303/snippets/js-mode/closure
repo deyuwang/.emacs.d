@@ -1,0 +1,8 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: closure
+# key: cl
+# binding: direct-keybinding
+# --
+(function($2){
+	$0
+})($1);

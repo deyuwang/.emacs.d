@@ -1,0 +1,21 @@
+/**
+ * Change content width
+ * Hide nav bar
+ */
+body {
+    line-height: 25px;
+}
+
+#content, .outline-2, #postamble {
+    width: 92%;
+    margin: 0 auto;
+}
+
+#table-of-contents {
+    display: none;
+}
+
+talbe {
+    width: 100%;
+    overflow: scroll;
+}

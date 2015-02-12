@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+#name : domget
+# --
+document.getElementById("$1");
+$0

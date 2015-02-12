@@ -1,8 +1,5 @@
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/lisp/themes")
-
-;(load-theme 'graham t)
-;夜晚或者在公司的时候使用暗色背景
+;根据时间、地点自动切换主题
 (defun get-hour ()
   (string-to-int (format-time-string "%H" (current-time))))
 
@@ -20,8 +17,8 @@
   (not (is-at-home)))
 
 (if (is-at-night)
-;	(load-theme 'graham t))
-	(load-theme 'deeper-blue t))
+	(load-theme 'solarized-dark t)
+	(load-theme 'solarized-light t))
 
 
 (provide 'init-theme)

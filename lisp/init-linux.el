@@ -11,4 +11,8 @@
  "eim-py" "euc-cn" 'eim-use-package
  "∆¥“Ù" "∫∫◊÷∆¥“Ù ‰»Î∑®" "py.txt")
 
+
+(require 'eww)
+(setq eww-search-prefix "http://www.haosou.com/s?ie=utf-8&q=")
+
 (provide 'init-linux)
