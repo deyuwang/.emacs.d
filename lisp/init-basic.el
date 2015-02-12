@@ -44,16 +44,16 @@
 
 
 ;;默认显示 80列就换行
-;(setq default-fill-column 80)
+(setq default-fill-column 80)
 
 ;;设置行间距
-;(setq-default line-spacing 2)
+(setq-default line-spacing 2)
 
 ;;不要生成临时文件
 (setq-default make-backup-files nil);
 
 ;;Ctrl+Z 在窗口模式下不最小化Eamcs
-;(if (eq window-system 'x) (global-set-key [(control z)] 'suspend-emacs))
+;;(if (eq window-system 'x) (global-set-key [(control z)] 'suspend-emacs))
 
 ;;高亮显示当前行
 ;(global-hl-line-mode)

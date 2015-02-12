@@ -181,7 +181,7 @@ windows to numbers."
 
 (defvar window-numbering-keymap
   (let ((map (make-sparse-keymap)))
-    (define-key map "\M-0" 'select-window-0)
+    ;;(define-key map "\M-0" 'select-window-0)
     (define-key map "\M-1" 'select-window-1)
     (define-key map "\M-2" 'select-window-2)
     (define-key map "\M-3" 'select-window-3)
@@ -190,7 +190,7 @@ windows to numbers."
     (define-key map "\M-6" 'select-window-6)
     (define-key map "\M-7" 'select-window-7)
     (define-key map "\M-8" 'select-window-8)
-    (define-key map "\M-9" 'select-window-9)
+;;    (define-key map "\M-9" 'select-window-9)
     map)
   "Keymap used in by `window-numbering-mode'.")
 
