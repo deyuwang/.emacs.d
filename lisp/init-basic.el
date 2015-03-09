@@ -2,7 +2,7 @@
 ;; 一些基本设置（不含第三方库）
 ;;----------------------------------------------------------------------------
 ;;窗口初始大小
-(setq initial-frame-alist '((top . 0) (left . 0) (width . 83) (height . 37)))
+(setq initial-frame-alist '((top . 0) (left . 0) (width . 81) (height . 37)))
 
 ;;设置打开文件的缺省目录
 ;(setq default-directory "E:/")

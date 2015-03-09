@@ -16,7 +16,7 @@
 (defun is-at-company()
   (not (is-at-home)))
 
-(if (is-at-night)
+(if t ;(is-at-night)
 	(load-theme 'solarized-dark t)
 	(load-theme 'solarized-light t))
 
