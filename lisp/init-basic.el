@@ -74,7 +74,7 @@
 ;(set-background-color "#CBE8CF")
 
 ;;隐藏菜单栏、右侧的滚动条
-;(menu-bar-mode 0)
+(menu-bar-mode 0)
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 
