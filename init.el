@@ -15,18 +15,19 @@
 (require 'init-auto-complete)
 (require 'init-yasnippet)
 (require 'init-javascript)
-(require 'init-speedbar)
 (require 'init-window-numbering)
-(require 'init-hide-region)
-(require 'init-hide-lines)
 (require 'init-smex)
 (require 'init-youdao-dictionary)
-(require 'init-highlight-parentheses)
 
 (require 'ox-freemind)
 
 (if (eq system-type 'windows-nt)
 	(require 'init-windows-nt)
   	(require 'init-linux))
+
+;; (require 'init-speedbar)
+;; (require 'init-hide-region)
+;; (require 'init-hide-lines)
+;; (require 'init-highlight-parentheses)
 
 (provide 'init)
