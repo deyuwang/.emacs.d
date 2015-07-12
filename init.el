@@ -23,6 +23,8 @@
 (require 'init-youdao-dictionary)
 (require 'init-highlight-parentheses)
 
+(require 'ox-freemind)
+
 (if (eq system-type 'windows-nt)
 	(require 'init-windows-nt)
   	(require 'init-linux))
