@@ -44,7 +44,8 @@
 
 
 ;;默认显示 80列就换行
-(setq default-fill-column 80)
+;(setq default-fill-column 80) ;default-fill-column' is an obsolete variable (as  of 23.2); use 'fill-column' instead.
+(setq fill-column 80)
 
 ;;设置行间距
 (setq-default line-spacing 2)
@@ -104,7 +105,8 @@
 
 ;; 设置Tab为4个字符
 (setq indent-tabs-mode nil)
-(setq default-tab-width 4)
+;;(setq default-tab-width 4); default-tab-width is an obsolete
+
 (setq tab-width 4)
 
 ;;Emacs顶部标题栏显示完整文件名
