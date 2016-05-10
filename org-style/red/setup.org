@@ -1,15 +1,10 @@
-# -*- mode: snippet -*-
-# name: html5
-# key: html5
-# --
 # Turn off default internal styles
 #+OPTIONS: html-style:nil
 
 # Exporting to HTML5
 #+HTML_DOCTYPE: html5
-#+HTML_HEAD: <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 #+HTML_HEAD: <meta http-equiv="X-UA-Compatible" content="IE=edge">
 #+HTML_HEAD: <meta name="viewport" content="width=device-width, initial-scale=1">
-#+HTML_HEAD: <link href="./style/style.css" rel="stylesheet" type="text/css">
 
-$0
+# Add notes.css here
+#+HTML_HEAD: <link href="./css/style.css" rel="stylesheet" type="text/css" />

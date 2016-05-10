@@ -1,0 +1,1 @@
+#+SETUPFILE: ~/.emacs.d/org-style/red/setup.org
