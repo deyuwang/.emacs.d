@@ -25,6 +25,9 @@
 	(require 'init-windows-nt)
   	(require 'init-linux))
 
+(if (eq system-type 'windows-nt)
+	(require 'init-git))
+
 ;; (require 'init-speedbar)
 ;; (require 'init-hide-region)
 ;; (require 'init-hide-lines)
