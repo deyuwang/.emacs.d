@@ -33,4 +33,6 @@
 ;; (require 'init-hide-lines)
 ;; (require 'init-highlight-parentheses)
 
+(require 'wdy-funs)
+
 (provide 'init)

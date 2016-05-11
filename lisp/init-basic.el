@@ -173,18 +173,6 @@
 (require 'simple-httpd)
 (require 'browse-url)
 
-(defun wdy-run-httpd-in-current-path()
-  (message (file-name-directory (buffer-file-name (current-buffer))))
-  (setq httpd-root (file-name-directory (buffer-file-name (current-buffer))))
-  (setq httpd-port 9090)
-  (httpd-start))
-
-(defun wdy-browser-in-server-web()
-  (interactive)
-  (wdy-run-httpd-in-current-path)
-  (browse-url (concat "http://localhost:9090/" (buffer-name (current-buffer)))))
-
-
 ;(defservlet hello-world text/plain (path)
 ;  (insert "hello, " (file-name-nondirectory path)))
 
