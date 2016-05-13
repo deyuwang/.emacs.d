@@ -142,7 +142,7 @@
 
 ;;Í¸Ã÷²»Í¸Ã÷
 (global-set-key [(f8)] 'loop-alpha)
-(setq alpha-list '((88 55) (100 100)))
+(setq alpha-list '((70 55) (100 100)))
 
 (defun loop-alpha ()
   (interactive)
