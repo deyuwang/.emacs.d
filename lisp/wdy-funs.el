@@ -1,4 +1,6 @@
+
 ;; 自己写的一些小函数
+;; http://ergoemacs.org/emacs/emacs.html
 
 ;; emacs -Q --script abc.el 123
 ;; (message "input argument are %s" argv)
@@ -62,10 +64,27 @@
   (wdy-run-httpd-in-current-path)
   (browse-url (concat "http://localhost:9090/" (buffer-name (current-buffer)))))
 
+(defun wdy-open-in-system ()
+  "在当前系统中打开文件所在目录"
+  (interactive)
+  (let ((dir (file-name-directory (buffer-file-name (current-buffer)))))
+    (w32-shell-execute "open" dir)))
 
 (defun wdy-open-funs-el ()
   (interactive)
   (find-file "~/.emacs.d/lisp/wdy-funs.el"))
+
+
+;; (defun hello () 
+;;   (save-excursion
+;;     (goto-char (point-min))
+;;     (if (string= "Fri"
+;; 		 (substring (buffer-string) 0 3))
+;; 	(progn 
+;; 	  (delete-char 24)
+;; 	  (insert (current-time-string))
+;;     (run-with-timer 1 nil 'hello)))))
+
 
 
 ;;(shell-command "explorer d:")
