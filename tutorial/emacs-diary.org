@@ -1,0 +1,89 @@
+#+TITLE: Emacs学习笔记
+
+
+* 函数
+** 字符串
+*** 拼接
+(concat str1 str2 ...)
+
+** 光标
+*** 移动
+(goto-char (point-min)) 
+(goto-line 2)
+(move-beginning-of-line 1)
+(move-end-of-line 1)
+
+** Buffer
+*** 切换
+(switch-to-buffer buf)
+
+*** 关闭
+(kill-buffer buf)
+
+*** 保存
+(save-buffer)
+
+*** 获取文件名称
+(buffer-file-name buffer)
+
+*** 获取文件所在目录
+(let ((dir (file-name-directory (buffer-file-name (current-buffer)))))
+
+*** 当前buffer
+(current-buffer)
+
+*** 使用临时buffer
+(with-temp-buffer "*temp*"
+		  (insert "hasdf")
+		  (buffer-string))
+
+** 文件
+*** 列出指定目录下匹配的文件列表
+(directory-files dir t match)
+
+*** 插入文件内容
+(insert-file-contents "c:abc.txt")
+
+*** 临时文件
+(with-temp-file "d:\\etmp.txt"
+  (insert "hello"))
+d盘下就会创建一个文件，内容为hello
+
+
+** 日期
+*** 默认的日记文件位置
+(setq diary-file "~/.emacs.d/diary") or (setq diary-file "~/.emacs.d/diary.gpg")
+
+** 文本
+*** 插入字符串
+(insert str)
+
+*** 标记一个单词（选中）
+(mark-word)
+
+*** 删除若干个单词
+(kill-word n)
+
+*** 查找替换
+(while (search-forward oldstr) 
+    (replace-match newstr)))
+
+** 系统
+*** 打开指定目录(windows资源管理器)
+(w32-shell-execute "open" dir)
+
+*** 执行系统指令
+(shell-command "notepad")
+
+** web
+*** 浏览指定url
+打开系统浏览器
+(browse-url (concat "http://localhost:9090/" (buffer-name (current-buffer))))
+*** 启动http服务器
+把当前buff文件所在目录作为webserver的root路径" 
+(defun wdy-run-httpd-in-current-path()
+  "把当前buff文件所在目录作为webserver的root路径"
+  (message (file-name-directory (buffer-file-name (current-buffer))))
+  (setq httpd-root (file-name-directory (buffer-file-name (current-buffer))))
+  (setq httpd-port 9090)
+  (httpd-start))

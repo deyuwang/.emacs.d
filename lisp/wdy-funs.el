@@ -74,6 +74,10 @@
   (interactive)
   (find-file "~/.emacs.d/lisp/wdy-funs.el"))
 
+(defun wdy-open-basic-el ()
+  (interactive)
+  (find-file "~/.emacs.d/lisp/init-basic.el"))
+
 
 ;; (defun hello () 
 ;;   (save-excursion
@@ -100,5 +104,7 @@
 
 
 
+;; 默认的日记文件
+(setq diary-file "~/.emacs.d/diary.gpg")
 
 (provide 'wdy-funs)
