@@ -18,10 +18,8 @@
 (require 'init-window-numbering)
 (require 'init-smex)
 (require 'init-youdao-dictionary)
-(require 'init-evil)
 
 (require 'ox-freemind)
-
 
 (if (eq system-type 'windows-nt)
 	(require 'init-windows-nt)
