@@ -5,6 +5,11 @@
 ;; emacs -Q --script abc.el 123
 ;; (message "input argument are %s" argv)
 
+(defun now ()
+  "插入当前时间"
+  (interactive)
+  (insert (format-time-string "[%Y-%m-%d, %a]")))
+
 (defun wdy-buffer-replace (buff oldstr newstr)
   "替换指定buffer中所有指定字符"
   (switch-to-buffer buf)
@@ -102,6 +107,13 @@
 ;;   (speak "你好郑州"))
 
 
+(defun auto-export-html ()
+  "主页下的org文件，修改后，自动生成html文件"
+  (interactive)
+  (if (string-match "wangdeyu\\.com.*\\.org"
+		    (buffer-file-name (current-buffer)))
+      (org-html-export-to-html)))
+(add-hook 'after-save-hook 'auto-export-html)
 
 
 ;; 默认的日记文件

@@ -109,9 +109,6 @@
 
 (setq tab-width 4)
 
-;; 使用ibuffer替代默认的buffer列表
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-
 ;;Emacs顶部标题栏显示完整文件名
 ;(setq frame-title-format " %b")
 (defun frame-title-string ()
@@ -178,6 +175,5 @@
 
 ;(defservlet hello-world text/plain (path)
 ;  (insert "hello, " (file-name-nondirectory path)))
-
 
 (provide 'init-basic)

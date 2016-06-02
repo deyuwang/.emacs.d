@@ -35,4 +35,7 @@
 
 (require 'wdy-funs)
 
+;; 使用ibuffer替代默认的buffer列表
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
 (provide 'init)
