@@ -8,14 +8,45 @@
 
 ** 光标
 *** 移动
+;; M-<
+(beginning-of-buffer)
+
+;; M->
+(end-of-buffer)
+
+
 (goto-char (point-min)) 
 (goto-line 2)
+
+(beginning-of-line)
+(end-of-line)
+
 (move-beginning-of-line 1)
 (move-end-of-line 1)
 
+(forward-line)
+
+;;移动光标并跳过指定的一些字符,返回跳过字符个数
+(skip-chars-forward "\t \n")
+
+;;移动光标并跳过指定的一些字符,返回跳过字符个数（负数）
+(skip-chars-backward "\t ")   
+
+*** 位置
+(point-max)
+(point-min)
+(point)
+
 ** Buffer
+*** 获取或者创建一个
+(get-buffer-create "*scratch2*")
+*** 清空
+(erase-buffer)
 *** 切换
 (switch-to-buffer buf)
+
+;; 程序切换到另外一个buffer里，当前界面不改变
+(set-buffer "emacs-diary.org")
 
 *** 关闭
 (kill-buffer buf)
@@ -27,7 +58,7 @@
 (buffer-file-name buffer)
 
 *** 获取文件所在目录
-(let ((dir (file-name-directory (buffer-file-name (current-buffer)))))
+(let (dir (file-name-directory (buffer-file-name (current-buffer))))
 
 *** 当前buffer
 (current-buffer)
@@ -37,6 +68,17 @@
 		  (insert "hasdf")
 		  (buffer-string))
 
+*** 全选
+*** 当前buffer一部分内容插入到另外一个buffer
+(append-to-buffer buffer 1 10)
+*** 从别的buffer获取内容插入到当前
+(insert-buffer-substring buffer 1 10)
+*** 判断是buffer名称还是buffer对象
+(bufferp "*scratch*") ;nil
+(bufferp (get-buffer "*scratch*")) ; t
+*** 标记整个buffer
+;; C-x h
+(mark-whole-buffer)
 ** 文件
 *** 列出指定目录下匹配的文件列表
 (directory-files dir t match)
@@ -49,7 +91,8 @@
   (insert "hello"))
 d盘下就会创建一个文件，内容为hello
 
-
+** 数值
+(int-to-string 3)
 ** 日期
 *** 默认的日记文件位置
 (setq diary-file "~/.emacs.d/diary") or (setq diary-file "~/.emacs.d/diary.gpg")
@@ -87,3 +130,51 @@ d盘下就会创建一个文件，内容为hello
   (setq httpd-root (file-name-directory (buffer-file-name (current-buffer))))
   (setq httpd-port 9090)
   (httpd-start))
+
+** 时间
+*** 当前时间
+(current-time-string)
+
+*** 格式化时间
+(format-time-string "[%Y-%m-%d, %a]")
+** Emacs版本号
+(emacs-version)
+"GNU Emacs 24.4.1 (i686-pc-mingw32)
+ of 2014-10-25 on LEG570"
+
+* 操作多台主机
+(setq *hosts* '("127.0.0.1" "127.0.0.2"))
+
+(defun ssh->hosts ()
+  "SSH到列表中的主机"
+  (dolist (host *hosts*)
+    (shell host)
+    ;;(insert (format "ssh %s" host))
+    (comint-send-input)))
+
+(defun run (command)
+  "执行Shell命令"
+  (let ((current-buf (current-buffer)))
+      (dolist (host *hosts*)
+        (shell host)
+        (insert command)
+        (comint-send-input))
+      (switch-to-buffer current-buf)))
+
+
+(run "pwd")
+
+(defun newline-and-submit ()
+  "获取并作为Shell命令执行当前行的内容，然后插入换行"
+  (interactive)
+  (let ((line (current-line-string)))
+    (run line)
+    (reindent-then-newline-and-indent)))
+
+(defun current-line-string ()
+  "获得当前行的字符串内容"
+  (interactive)
+  (buffer-substring-no-properties (line-beginning-position) (line-end-position)))
+
+(local-set-key (kbd "<RET>") 'newline-and-submit)
+(local-set-key (kbd "<C-return>") 'newline-and-submit)
