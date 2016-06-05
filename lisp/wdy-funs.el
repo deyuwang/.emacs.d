@@ -99,12 +99,24 @@
 ;;(shell-command "explorer d:")
 ;(global-set-key "\C-c\ \C-r" 'wdy-open-funs-el)
 
-;; (setq text "it is")
-;; (shell-command (concat "start speak.bat \"" text "\""))
+(defun wdy-speak (str)
+  "朗读文本"
+  (with-temp-file "~/speak.vbs"
+  (insert "CreateObject(\"SAPI.SpVoice\").Speak ")
+  (insert (concat "\"" str "\"")))
+  (shell-command "wscript ~/speak.vbs"))
 
-;; (defun wdy-speak ()
-;;   (interactive)
-;;   (speak "你好郑州"))
+
+(defun wdy-speak-region (start end)
+  "朗读选中的文本"
+  (interactive "r")
+  (wdy-speak
+   (buffer-substring start end)))
+
+
+;; (while (= 0 (forward-word))
+;;   (let ((str (buffer-substring-no-properties (line-beginning-position) (line-end-position))))
+;;   (insert (concat str "\n"))))
 
 
 (defun auto-export-html ()
