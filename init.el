@@ -3,8 +3,17 @@
 (add-to-list 'load-path "~/.emacs.d/site-lisp/eim")
 
 (require 'package)
-(add-to-list 'package-archives
-			 '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+;; We include the org repository for completeness, but don't normally
+;; use it.
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
+
+;;; Also use Melpa for most packages
+(add-to-list 'package-archives `("melpa" . ,(if (< emacs-major-version 24)
+                                                "http://melpa.org/packages/"
+                                              "https://melpa.org/packages/")))
+
 (package-initialize)
 
 (require 'init-basic)
