@@ -10,6 +10,11 @@
 ;;去掉启动欢迎界面
 (setq inhibit-startup-message t)
 
+ 
+;;没有提示音，也不闪屏  
+(setq ring-bell-function 'ignore)  
+(setq visible-bell nil)
+
 ;;Ctrl+鼠标滚轮缩放字体
 (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
 (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)

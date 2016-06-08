@@ -1,13 +1,13 @@
-#+TITLE: EmacsÑ§Ï°±Ê¼Ç
+#+TITLE: Emacså­¦ä¹ ç¬”è®°
+#+STARTUP: showall
 
-
-* º¯Êı
-** ×Ö·û´®
-*** Æ´½Ó
+* å‡½æ•°
+** å­—ç¬¦ä¸²
+*** æ‹¼æ¥
 (concat str1 str2 ...)
 
-** ¹â±ê
-*** ÒÆ¶¯
+** å…‰æ ‡
+*** ç§»åŠ¨
 ;; M-<
 (beginning-of-buffer)
 
@@ -26,134 +26,150 @@
 
 (forward-line)
 
-;;ÒÆ¶¯¹â±ê²¢Ìø¹ıÖ¸¶¨µÄÒ»Ğ©×Ö·û,·µ»ØÌø¹ı×Ö·û¸öÊı
+;;ç§»åŠ¨å…‰æ ‡å¹¶è·³è¿‡æŒ‡å®šçš„ä¸€äº›å­—ç¬¦,è¿”å›è·³è¿‡å­—ç¬¦ä¸ªæ•°
 (skip-chars-forward "\t \n")
 
-;;ÒÆ¶¯¹â±ê²¢Ìø¹ıÖ¸¶¨µÄÒ»Ğ©×Ö·û,·µ»ØÌø¹ı×Ö·û¸öÊı£¨¸ºÊı£©
+;;ç§»åŠ¨å…‰æ ‡å¹¶è·³è¿‡æŒ‡å®šçš„ä¸€äº›å­—ç¬¦,è¿”å›è·³è¿‡å­—ç¬¦ä¸ªæ•°ï¼ˆè´Ÿæ•°ï¼‰
 (skip-chars-backward "\t ")   
 
-*** Î»ÖÃ
+*** ä½ç½®
 (point-max)
 (point-min)
 (point)
 
 ** Buffer
-*** »ñÈ¡»òÕß´´½¨Ò»¸ö
+*** è·å–æˆ–è€…åˆ›å»ºä¸€ä¸ª
 (get-buffer-create "*scratch2*")
-*** Çå¿Õ
+*** æ¸…ç©º
 (erase-buffer)
-*** ÇĞ»»
+*** åˆ‡æ¢
 (switch-to-buffer buf)
 
-;; ³ÌĞòÇĞ»»µ½ÁíÍâÒ»¸öbufferÀï£¬µ±Ç°½çÃæ²»¸Ä±ä
+;; ç¨‹åºåˆ‡æ¢åˆ°å¦å¤–ä¸€ä¸ªbufferé‡Œï¼Œå½“å‰ç•Œé¢ä¸æ”¹å˜
 (set-buffer "emacs-diary.org")
 
-*** ¹Ø±Õ
+*** å…³é—­
 (kill-buffer buf)
 
-*** ±£´æ
+*** ä¿å­˜
 (save-buffer)
 
-*** »ñÈ¡ÎÄ¼şÃû³Æ
+*** è·å–æ–‡ä»¶åç§°
 (buffer-file-name buffer)
 
-*** »ñÈ¡ÎÄ¼şËùÔÚÄ¿Â¼
+*** è·å–æ–‡ä»¶æ‰€åœ¨ç›®å½•
 (let (dir (file-name-directory (buffer-file-name (current-buffer))))
 
-*** µ±Ç°buffer
+*** å½“å‰buffer
 (current-buffer)
 
-*** Ê¹ÓÃÁÙÊ±buffer
+*** ä½¿ç”¨ä¸´æ—¶buffer
 (with-temp-buffer "*temp*"
 		  (insert "hasdf")
 		  (buffer-string))
 
-*** È«Ñ¡
-*** µ±Ç°bufferÒ»²¿·ÖÄÚÈİ²åÈëµ½ÁíÍâÒ»¸öbuffer
+*** å…¨é€‰
+*** å½“å‰bufferä¸€éƒ¨åˆ†å†…å®¹æ’å…¥åˆ°å¦å¤–ä¸€ä¸ªbuffer
 (append-to-buffer buffer 1 10)
-*** ´Ó±ğµÄbuffer»ñÈ¡ÄÚÈİ²åÈëµ½µ±Ç°
+*** ä»åˆ«çš„bufferè·å–å†…å®¹æ’å…¥åˆ°å½“å‰
 (insert-buffer-substring buffer 1 10)
-*** ÅĞ¶ÏÊÇbufferÃû³Æ»¹ÊÇbuffer¶ÔÏó
+*** åˆ¤æ–­æ˜¯bufferåç§°è¿˜æ˜¯bufferå¯¹è±¡
 (bufferp "*scratch*") ;nil
 (bufferp (get-buffer "*scratch*")) ; t
-*** ±ê¼ÇÕû¸öbuffer
+*** æ ‡è®°æ•´ä¸ªbuffer
 ;; C-x h
 (mark-whole-buffer)
-** ÎÄ¼ş
-*** ÁĞ³öÖ¸¶¨Ä¿Â¼ÏÂÆ¥ÅäµÄÎÄ¼şÁĞ±í
+** æ–‡ä»¶
+*** åˆ—å‡ºæŒ‡å®šç›®å½•ä¸‹åŒ¹é…çš„æ–‡ä»¶åˆ—è¡¨
 (directory-files dir t match)
 
-*** ²åÈëÎÄ¼şÄÚÈİ
+*** æ’å…¥æ–‡ä»¶å†…å®¹
 (insert-file-contents "c:abc.txt")
 
-*** ÁÙÊ±ÎÄ¼ş
+*** ä¸´æ—¶æ–‡ä»¶
 (with-temp-file "d:\\etmp.txt"
   (insert "hello"))
-dÅÌÏÂ¾Í»á´´½¨Ò»¸öÎÄ¼ş£¬ÄÚÈİÎªhello
+dç›˜ä¸‹å°±ä¼šåˆ›å»ºä¸€ä¸ªæ–‡ä»¶ï¼Œå†…å®¹ä¸ºhello
 
-** ÊıÖµ
+** æ•°å€¼
 (int-to-string 3)
-** ÈÕÆÚ
-*** Ä¬ÈÏµÄÈÕ¼ÇÎÄ¼şÎ»ÖÃ
+** æ—¥æœŸ
+*** é»˜è®¤çš„æ—¥è®°æ–‡ä»¶ä½ç½®
 (setq diary-file "~/.emacs.d/diary") or (setq diary-file "~/.emacs.d/diary.gpg")
 
-** ÎÄ±¾
-*** ²åÈë×Ö·û´®
+** æ–‡æœ¬
+*** æ’å…¥å­—ç¬¦ä¸²
 (insert str)
 
-*** ±ê¼ÇÒ»¸öµ¥´Ê£¨Ñ¡ÖĞ£©
+*** æ ‡è®°ä¸€ä¸ªå•è¯ï¼ˆé€‰ä¸­ï¼‰
 (mark-word)
 
-*** É¾³ıÈô¸É¸öµ¥´Ê
+*** åˆ é™¤è‹¥å¹²ä¸ªå•è¯
 (kill-word n)
 
-*** ²éÕÒÌæ»»
+*** æŸ¥æ‰¾æ›¿æ¢
 (while (search-forward oldstr) 
     (replace-match newstr)))
 
-** ÏµÍ³
-*** ´ò¿ªÖ¸¶¨Ä¿Â¼(windows×ÊÔ´¹ÜÀíÆ÷)
+** ç³»ç»Ÿ
+*** æ‰“å¼€æŒ‡å®šç›®å½•(windowsèµ„æºç®¡ç†å™¨)
 (w32-shell-execute "open" dir)
 
-*** Ö´ĞĞÏµÍ³Ö¸Áî
+*** æ‰§è¡Œç³»ç»ŸæŒ‡ä»¤
 (shell-command "notepad")
 
 ** web
-*** ä¯ÀÀÖ¸¶¨url
-´ò¿ªÏµÍ³ä¯ÀÀÆ÷
+*** æµè§ˆæŒ‡å®šurl
+æ‰“å¼€ç³»ç»Ÿæµè§ˆå™¨
 (browse-url (concat "http://localhost:9090/" (buffer-name (current-buffer))))
-*** Æô¶¯http·şÎñÆ÷
-°Ñµ±Ç°buffÎÄ¼şËùÔÚÄ¿Â¼×÷ÎªwebserverµÄrootÂ·¾¶" 
+*** å¯åŠ¨httpæœåŠ¡å™¨
+æŠŠå½“å‰buffæ–‡ä»¶æ‰€åœ¨ç›®å½•ä½œä¸ºwebserverçš„rootè·¯å¾„" 
 (defun wdy-run-httpd-in-current-path()
-  "°Ñµ±Ç°buffÎÄ¼şËùÔÚÄ¿Â¼×÷ÎªwebserverµÄrootÂ·¾¶"
+  "æŠŠå½“å‰buffæ–‡ä»¶æ‰€åœ¨ç›®å½•ä½œä¸ºwebserverçš„rootè·¯å¾„"
   (message (file-name-directory (buffer-file-name (current-buffer))))
   (setq httpd-root (file-name-directory (buffer-file-name (current-buffer))))
   (setq httpd-port 9090)
   (httpd-start))
 
-** Ê±¼ä
-*** µ±Ç°Ê±¼ä
+** æ—¶é—´
+*** å½“å‰æ—¶é—´
 (current-time-string)
 
-*** ¸ñÊ½»¯Ê±¼ä
+*** æ ¼å¼åŒ–æ—¶é—´
 (format-time-string "[%Y-%m-%d, %a]")
-** Emacs°æ±¾ºÅ
+** Emacsç‰ˆæœ¬å·
 (emacs-version)
 "GNU Emacs 24.4.1 (i686-pc-mingw32)
  of 2014-10-25 on LEG570"
 
-* ²Ù×÷¶àÌ¨Ö÷»ú
+** è¿›ç¨‹
+
+(start-process "wscript" nil "wscript" "d:/speak.vbs")
+
+(start-process NAME BUFFER PROGRAM &rest PROGRAM-ARGS)
+
+** å®šæ—¶
+;;æ¯éš”å‡ ç§’æŠ¥ä¸€æ¬¡æ—¶é—´
+(setq n 0)
+(defun abc ()
+  (if (< n 3)
+      (progn
+	(setq n (1+ n))
+	(wdy-date)
+	(run-with-timer 3 nil 'abc))))
+(abc)
+* æ“ä½œå¤šå°ä¸»æœº
 (setq *hosts* '("127.0.0.1" "127.0.0.2"))
 
 (defun ssh->hosts ()
-  "SSHµ½ÁĞ±íÖĞµÄÖ÷»ú"
+  "SSHåˆ°åˆ—è¡¨ä¸­çš„ä¸»æœº"
   (dolist (host *hosts*)
     (shell host)
     ;;(insert (format "ssh %s" host))
     (comint-send-input)))
 
 (defun run (command)
-  "Ö´ĞĞShellÃüÁî"
+  "æ‰§è¡ŒShellå‘½ä»¤"
   (let ((current-buf (current-buffer)))
       (dolist (host *hosts*)
         (shell host)
@@ -165,16 +181,79 @@ dÅÌÏÂ¾Í»á´´½¨Ò»¸öÎÄ¼ş£¬ÄÚÈİÎªhello
 (run "pwd")
 
 (defun newline-and-submit ()
-  "»ñÈ¡²¢×÷ÎªShellÃüÁîÖ´ĞĞµ±Ç°ĞĞµÄÄÚÈİ£¬È»ºó²åÈë»»ĞĞ"
+  "è·å–å¹¶ä½œä¸ºShellå‘½ä»¤æ‰§è¡Œå½“å‰è¡Œçš„å†…å®¹ï¼Œç„¶åæ’å…¥æ¢è¡Œ"
   (interactive)
   (let ((line (current-line-string)))
     (run line)
     (reindent-then-newline-and-indent)))
 
 (defun current-line-string ()
-  "»ñµÃµ±Ç°ĞĞµÄ×Ö·û´®ÄÚÈİ"
+  "è·å¾—å½“å‰è¡Œçš„å­—ç¬¦ä¸²å†…å®¹"
   (interactive)
   (buffer-substring-no-properties (line-beginning-position) (line-end-position)))
 
 (local-set-key (kbd "<RET>") 'newline-and-submit)
 (local-set-key (kbd "<C-return>") 'newline-and-submit)
+
+* ã€Šmastering emacsã€‹
+** Counting Things
+M-x count-lines-region Counts number of lines in the region
+M-x count-matches Counts number of patterns that match in a region
+M-x count-words Counts words, lines and chars in the buffer
+M-x count-words-region , M-= Counts words, lines and chars in the region
+
+** Joining and Splitting Lines
+C-o Inserts a blank line after point
+C-x C-o Deletes all blank lines after point
+C-M-o Splits a line after point, keeping the indentation
+M-Ë† Joins the line the point is on with the one above
+
+** Whitespace Commands
+M-\\ Deletes all spaces and tabs around the point
+C-x C-o Delete blank lines
+
+** Whitespace Minor Mode
+M-x whitespace-mode Minor mode that highlights all whitespace characters
+M-x whitespace-newline-mode Minor mode that displays newline characters with a $
+
+** Whitespace report
+M-x whitespace-report Shows whitespace issues
+M-x whitespace-report-region As above but for the region
+M-x whitespace-clean-up Attempts automatic cleanup
+M-x whitespace-clean-up-region As above but for the region
+
+** Changing Case
+C-x C-u uppercases the region
+c-x c-l lowercases the region
+m-x upcase-initials-region Capitalizes the region
+
+** Switch two word
+M-t Transpose Words
+C-M-t  Transpose S-expressions è°ƒæ¢ä¸¤ä¸ª
+
+** æ³¨é‡Šæ’ç‰ˆ
+M-x comment-box
+M-q è‡ªåŠ¨æ¢è¡Œï¼Œæ’ç‰ˆ
+C-u M-q è¡¥é½åˆ°70é•¿åº¦
+C-x f è®¾ç½®å®½åº¦
+
+** æ’åº
+M-x sort-columns Sorts column(s) alphabetically
+M-x sort-fields Sorts field(s) lexicographically
+M-x sort-lines Sorts alphabetically
+M-x sort-numeric-fields Sorts field(s) numerically
+M-x sort-paragraphs Sorts paragraphs alphabetically,
+M-x sort-regexp-fields Sorts by regexp-defined fields lexicographically
+
+** å¯¹é½
+UNIVERSE_ANSWER_CONST= 42
+UNIVERSE_QUESTION= "What is The Answer"
+
+é€‰ä¸­ä¸‹é¢çš„æ–‡æœ¬
+M-x align-regexp = 
+
+** æ»šåŠ¨å…¶ä»–çª—å£å†…å®¹
+C-M-v Scroll down the other window
+C-M-S-v Scroll up the other window
+
+

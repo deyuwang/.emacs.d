@@ -125,20 +125,17 @@
 			  (while (search-forward-regexp ")" nil 'move) 
 			    (replace-match "右括号"))
 			  (goto-char  (point-min))
-			  (while (search-forward-regexp "-" nil 'move) 
-			    (replace-match "横杠"))
-			  (goto-char  (point-min))
 			  (while (search-forward-regexp "[\\\\]" nil 'move) 
 			    (replace-match "反斜杠"))			  
 			  (goto-char  (point-min))
 			  (while (search-forward-regexp "[\n\r]" nil 'move) 
-			    (replace-match " "))
+			    (replace-match ","))
 			  (wdy-speak (buffer-string)))))))
 
 (defun wdy-date ()
   "报日期"
   (interactive)
-  (wdy-speak (format-time-string "%m月%d号%a%H点%m分")))
+  (wdy-speak (format-time-string "%m月%d号%a%H点%M分")))
 
 
 (defun auto-export-html ()

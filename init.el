@@ -32,12 +32,14 @@
 (require 'init-youdao-dictionary)
 (require 'ox-freemind)
 (require 'init-git)
+(require 'init-ibuffer)
+
 ;; (require 'init-speedbar)
 ;; (require 'init-hide-region)
 ;; (require 'init-hide-lines)
 ;; (require 'init-highlight-parentheses)
 (require 'wdy-funs)
-(require 'init-ibuffer)
 
 
-(provide 'init)
+
+(provide 'put)
