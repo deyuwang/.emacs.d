@@ -16,12 +16,12 @@
 (defun is-at-company()
   (not (is-at-home)))
 
-;(load-theme 'misterioso t)
-;(set-cursor-color "green")
+(load-theme 'misterioso t)
+(set-cursor-color "green")
 
-(if (is-at-night)
-    (load-theme 'solarized-dark t)
-  (load-theme 'solarized-light t))
+;; (if (is-at-night)
+;;     (load-theme 'solarized-dark t)
+;;   (load-theme 'solarized-light t))
 
 
 (provide 'init-theme)

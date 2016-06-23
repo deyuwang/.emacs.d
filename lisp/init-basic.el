@@ -114,6 +114,10 @@
 
 (setq tab-width 4)
 
+;; eshell 命令颜色
+(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t) 
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on t) 
+
 ;;Emacs顶部标题栏显示完整文件名
 ;(setq frame-title-format " %b")
 (defun frame-title-string ()
