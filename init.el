@@ -33,6 +33,7 @@
 (require 'init-theme)
 (require 'init-auto-complete)
 (require 'init-yasnippet)
+(require 'init-evil)
 (require 'init-javascript)
 (require 'init-window-numbering)
 (require 'init-smex)
