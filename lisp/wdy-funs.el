@@ -5,7 +5,7 @@
 ;; emacs -Q --script abc.el 123
 ;; (message "input argument are %s" argv)
 
-(defun now ()
+(defun wdy-now ()
   "插入当前时间"
   (interactive)
   (insert (format-time-string "[%Y-%m-%d, %a]")))
@@ -138,14 +138,14 @@
   (wdy-speak (format-time-string "%m月%d号%a%H点%M分")))
 
 
-(defun auto-export-html ()
+(defun wdy-auto-export-html ()
   "自己网站主页下的org文件，修改保存后，自动发布成html文件"
   (interactive)
   (if (string-match "wangdeyu\\.com.*\\.org"
 		    (buffer-file-name (current-buffer)))
       (org-html-export-to-html)))
 
-(add-hook 'after-save-hook 'auto-export-html)
+;(add-hook 'after-save-hook 'wdy-auto-export-html)
 
 
 (defun wdy-open-jtopo-site()
