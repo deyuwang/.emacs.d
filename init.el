@@ -26,7 +26,7 @@
 
 (if (eq system-type 'windows-nt)
 	(require 'init-windows-nt)
-  	(require 'init-linux))
+  (require 'init-linux))
 
 (require 'init-basic)
 (require 'init-text)
@@ -40,14 +40,15 @@
 (require 'init-youdao-dictionary)
 (require 'ox-freemind)
 (require 'init-git)
-(require 'init-ibuffer)
 
 ;; (require 'init-speedbar)
 ;; (require 'init-hide-region)
 ;; (require 'init-hide-lines)
 ;; (require 'init-highlight-parentheses)
+
 (require 'wdy-funs)
 
-
+(server-start)
+(setq default-tab-width 4); default-tab-width is an obsolete
 
 (provide 'put)

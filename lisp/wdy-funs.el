@@ -133,18 +133,27 @@
 			  (wdy-speak (buffer-string)))))))
 
 (defun wdy-date ()
-  "报日期"
+  "语音播报日期时间"
   (interactive)
   (wdy-speak (format-time-string "%m月%d号%a%H点%M分")))
 
 
 (defun auto-export-html ()
-  "主页下的org文件，修改后，自动生成html文件"
+  "自己网站主页下的org文件，修改保存后，自动发布成html文件"
   (interactive)
   (if (string-match "wangdeyu\\.com.*\\.org"
 		    (buffer-file-name (current-buffer)))
       (org-html-export-to-html)))
+
 (add-hook 'after-save-hook 'auto-export-html)
+
+
+(defun wdy-open-jtopo-site()
+  (interactive)
+  (setq httpd-root "d:\\temp\\jtopo-new-site")
+  (setq httpd-port 9090)
+  (httpd-start)
+  (browse-url (concat "http://localhost:9090/index.html")))
 
 
 ;; 默认的日记文件

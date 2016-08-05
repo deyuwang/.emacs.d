@@ -1,10 +1,13 @@
 #+TITLE: Emacs学习笔记
-#+STARTUP: showall
 
 * 函数
 ** 字符串
 *** 拼接
 (concat str1 str2 ...)
+
+*** 转换成大小写
+(upcase "abc123")
+(downcase "ABC123")
 
 ** 光标
 *** 移动
@@ -256,4 +259,39 @@ M-x align-regexp =
 C-M-v Scroll down the other window
 C-M-S-v Scroll up the other window
 
+* 字节处理
+** 十六进制字符转数字
+(string-to-int "FF3F" 16)
+(hexl-hex-string-to-integer "0F")
 
+** 数字转16进制字符串
+(format "%x" 5)
+(format "%02x" 25)
+
+* 实例
+** 自动补全括号
+(defun my-c-mode-auto-pair ()
+  (interactive)
+  (make-local-variable 'skeleton-pair-alist)
+  (setq skeleton-pair-alist '(
+    (?` ?` _ "''")
+    (?\( ? _ " )")
+    (?\[ ? _ " ]")
+    (?{ \n > _ \n ?} >)))
+  (setq skeleton-pair t)
+  (local-set-key (kbd "(") 'skeleton-pair-insert-maybe)
+  (local-set-key (kbd "{") 'skeleton-pair-insert-maybe)
+  (local-set-key (kbd "`") 'skeleton-pair-insert-maybe)
+  (local-set-key (kbd "[") 'skeleton-pair-insert-maybe))
+(add-hook 'c-mode-hook 'my-c-mode-auto-pair)
+(add-hook 'c++-mode-hook 'my-c-mode-auto-pair)
+
+** 将文件模式和文件后缀关联起来
+(setq auto-mode-alist
+      ;; 将文件模式和文件后缀关联起来
+      (append '(("\\.py\\'" . python-mode)
+                ("\\.s?html?\\'" . html-helper-mode)
+                ("\\.asp\\'" . html-helper-mode)
+                ("\\.phtml\\'" . html-helper-mode)
+                ("\\.css\\'" . css-mode))
+              auto-mode-alist))

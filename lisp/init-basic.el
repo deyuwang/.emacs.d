@@ -110,9 +110,8 @@
 
 ;; 设置Tab为4个字符
 (setq indent-tabs-mode nil)
-;;(setq default-tab-width 4); default-tab-width is an obsolete
-
 (setq tab-width 4)
+(setq default-tab-width 4); default-tab-width is an obsolete
 
 ;; eshell 命令颜色
 (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t) 
@@ -173,6 +172,17 @@
  vc-make-backup-files t); 有版本控制也做备份
 
 (setq make-backup-files t)
+
+;; % 在匹配的括号之间跳转
+(defun match-paren (arg)
+  "Go to the matching paren if on a paren; otherwise insert %."
+  (interactive "p")
+  (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
+		((looking-at "\\s\)") (forward-char 1) (backward-list 1))
+		(t (self-insert-command (or arg 1)))))
+
+(global-set-key "%" 'match-paren)
+
 
 ;; customization
 (setq custom-file "~/.emacs.d/lisp/custom.el")
