@@ -10,4 +10,6 @@
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
 
+(global-set-key (kbd "C-z") 'ace-jump-word-mode)
+
 (provide 'init-smex)
