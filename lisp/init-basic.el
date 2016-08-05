@@ -9,7 +9,6 @@
 
 ;;去掉启动欢迎界面
 (setq inhibit-startup-message t)
-
  
 ;;没有提示音，也不闪屏  
 (setq ring-bell-function 'ignore)  
@@ -47,7 +46,6 @@
 ;;禁止自动保存
 ;;(auto-save-mode t)
 
-
 ;;默认显示 80列就换行
 ;(setq default-fill-column 80) ;default-fill-column' is an obsolete variable (as  of 23.2); use 'fill-column' instead.
 (setq fill-column 80)
@@ -84,22 +82,16 @@
 (tool-bar-mode 0)
 (scroll-bar-mode 0)
 
-;; 开启ido-mode
-(setq ido-enable-flex-matching t)
-(setq ido-use-filename-at-point 'guess)
-(setq ido-everywhere t)
-(ido-mode 1)
-
 ;;buffer 窗口快捷
 ;;(global-set-key [F12] 'delete-other-windows);关闭其它窗口
 (global-set-key "\M-9" 'kill-this-buffer);关闭当前buffe
 (global-set-key "\M-0" 'delete-window); 关闭窗口
 
 (global-set-key (kbd "<f5>") 'kmacro-call-macro);播放宏
-(define-key  key-translation-map [f9] (kbd "C-x r l")) ;查看书签
-(define-key  key-translation-map [f10] (kbd "C-x r m")) ;增加书签
+;(define-key  key-translation-map [f9] (kbd "C-x r l")) ;查看书签
+;(define-key  key-translation-map [f10] (kbd "C-x r m")) ;增加书签
 ;(define-key  key-translation-map [f11] (kbd "C-x"))
-(define-key  key-translation-map [f12] (kbd "C-x"))
+;(define-key  key-translation-map [f12] (kbd "C-x"))
 
 ;; 光标所在行不变，上下滚动
 (global-set-key "\M-p" '(lambda () (interactive) (scroll-down 1)))
@@ -149,7 +141,7 @@
 
 
 ;;透明不透明
-(global-set-key [(f8)] 'loop-alpha)
+;(global-set-key [(f8)] 'loop-alpha)
 (setq alpha-list '((70 55) (100 100)))
 
 (defun loop-alpha ()
@@ -169,19 +161,9 @@
  kept-new-versions 6 ; 保留最近的6个备份文件
  kept-old-versions 2 ; 保留最早的2个备份文件(前两个是最早的，后4个是最近的)
  version-control t ; 多次备
- vc-make-backup-files t); 有版本控制也做备份
+ )
 
 (setq make-backup-files t)
-
-;; % 在匹配的括号之间跳转
-(defun match-paren (arg)
-  "Go to the matching paren if on a paren; otherwise insert %."
-  (interactive "p")
-  (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
-		((looking-at "\\s\)") (forward-char 1) (backward-list 1))
-		(t (self-insert-command (or arg 1)))))
-
-(global-set-key "%" 'match-paren)
 
 
 ;; customization

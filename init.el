@@ -36,7 +36,7 @@
 (require 'init-evil)
 (require 'init-javascript)
 (require 'init-window-numbering)
-(require 'init-smex)
+(require 'init-helm)
 (require 'init-youdao-dictionary)
 (require 'ox-freemind)
 (require 'init-git)
