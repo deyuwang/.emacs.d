@@ -24,7 +24,7 @@
   helm-recentf-fuzzy-match		  t
   helm-scroll-amount			  8
   helm-ff-file-name-history-use-recentf t)
-z
+
 
 (add-hook 'after-init-hookq
           (lambda ()
