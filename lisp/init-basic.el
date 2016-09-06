@@ -31,6 +31,8 @@
 ;;显示列号
 (setq column-number-mode t)
 ;;(setq line-number-mode nil)
+(setq linum-format "%d ")
+
 ;;在左侧显示行号
 (global-linum-mode 'linum-mode)
 

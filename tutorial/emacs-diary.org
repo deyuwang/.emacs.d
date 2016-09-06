@@ -171,6 +171,8 @@ d盘下就会创建一个文件，内容为hello
     ;;(insert (format "ssh %s" host))
     (comint-send-input)))
 
+(ssh->hosts)
+
 (defun run (command)
   "执行Shell命令"
   (let ((current-buf (current-buffer)))
@@ -178,7 +180,7 @@ d盘下就会创建一个文件，内容为hello
         (shell host)
         (insert command)
         (comint-send-input))
-      (switch-to-buffer current-buf)))
+		(switch-to-buffer current-buf)))
 
 
 (run "pwd")
@@ -195,7 +197,8 @@ d盘下就会创建一个文件，内容为hello
   (interactive)
   (buffer-substring-no-properties (line-beginning-position) (line-end-position)))
 
-(local-set-key (kbd "<RET>") 'newline-and-submit)
+
+;(local-set-key (kbd "<RET>") 'newline-and-submit)
 (local-set-key (kbd "<C-return>") 'newline-and-submit)
 
 * 《mastering emacs》

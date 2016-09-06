@@ -6,7 +6,10 @@
 (helm-mode 1)
 (helm-autoresize-mode 1)
 
+(setq helm-ff-auto-update-initial-value nil)    ; 禁止自动补全
+
 (global-set-key (kbd "M-x") 'helm-M-x)
+(setq helm-M-x-fuzzy-match t)
 (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-x b") 'helm-mini)
@@ -25,6 +28,12 @@
   helm-scroll-amount			  8
   helm-ff-file-name-history-use-recentf t)
 
+(defun helm-do-grep-recursive (&optional non-recursive)
+  "Like `helm-do-grep', but greps recursively by default."
+  (interactive "P")
+  (let* ((current-prefix-arg (not non-recursive))
+         (helm-current-prefix-arg non-recursive))
+    (call-interactively 'helm-do-grep)))
 
 (add-hook 'after-init-hookq
           (lambda ()

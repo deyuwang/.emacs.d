@@ -3,18 +3,15 @@
 (add-to-list 'load-path "~/.emacs.d/site-lisp/eim")
 
 (require 'package)
-;(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(setq package-archives  
+       '(("gnu"          . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/") 
+         ("melpa"        . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/") 
+         ("melpa-stable" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa-stable/") 
+         ("org"          . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/") 
+         ("marmalade"    . "https://mirrors.tuna.tsinghua.edu.cn/elpa/marmalade/"))) 
 
-;; We include the org repository for completeness, but don't normally
-;; use it.
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
+(package-initialize)
 
-;;; Also use Melpa for most packages
-(add-to-list 'package-archives `("melpa" . ,(if (< emacs-major-version 24)
-                                                "http://melpa.org/packages/"
-                                              "https://melpa.org/packages/")))
-
-;(package-initialize)
 
 
 (require 'init-utils)
@@ -28,7 +25,6 @@
 	(require 'init-windows-nt)
   (require 'init-linux))
 
-(require 'init-basic)
 (require 'init-text)
 (require 'init-theme)
 (require 'init-auto-complete)
@@ -46,6 +42,7 @@
 ;; (require 'init-hide-lines)
 ;; (require 'init-highlight-parentheses)
 
+(require 'init-basic)
 (require 'wdy-funs)
 
 (server-start)
