@@ -49,3 +49,4 @@
 (setq default-tab-width 4); default-tab-width is an obsolete
 
 (provide 'put)
+(put 'upcase-region 'disabled nil)
