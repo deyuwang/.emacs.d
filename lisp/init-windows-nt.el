@@ -1,30 +1,30 @@
 
-;;Tramp 远程(依赖plink.exe在当前path可访问)
+;;Tramp 脭露鲁脤(脪脌脌碌plink.exe脭脷碌卤脟掳path驴脡路脙脦脢)
 (require 'tramp) 
 
-;;--------------------语言环境字符集设置(utf-8)------------------
-;(set-language-environment 'Chinese-GB)
-;(set-keyboard-coding-system 'utf-8)
-;(set-clipboard-coding-system 'utf-8)
-;(set-terminal-coding-system 'utf-8)
-;(set-buffer-file-coding-system 'utf-8)
-;(set-default-coding-systems 'utf-8)
-;(set-selection-coding-system 'utf-8)
-;(modify-coding-system-alist 'process "*" 'utf-8)
-;(setq default-process-coding-system '(utf-8 . utf-8))
-;(setq-default pathname-coding-system 'utf-8)
-;(set-file-name-coding-system 'utf-8)
-;(setq ansi-color-for-comint-mode t)
-;(setq file-name-coding-system 'utf-8)
-;(setq path-name-coding-system 'utf-8)
+;;--------------------脫茂脩脭禄路戮鲁脳脰路没录炉脡猫脰脙(utf-8)------------------
+(set-language-environment 'Chinese-GB)
+(set-keyboard-coding-system 'utf-8)
+(set-clipboard-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-buffer-file-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-selection-coding-system 'utf-8)
+(modify-coding-system-alist 'process "*" 'utf-8)
+(setq default-process-coding-system '(utf-8 . utf-8))
+(setq-default pathname-coding-system 'utf-8)
+(set-file-name-coding-system 'utf-8)
+(setq ansi-color-for-comint-mode t)
+(setq file-name-coding-system 'utf-8)
+(setq path-name-coding-system 'utf-8)
 
-;(if (eq system-type 'windows-nt) (setq file-name-coding-system 'gbk))
+(if (eq system-type 'windows-nt) (setq file-name-coding-system 'gbk))
 
-;;默认字体
-;(set-default-font "Courier New-12")
+脛卢脠脧脳脰脤氓
+(set-default-font "Courier New-12")
 
-;;汉字粘贴乱码的问题
-;(set-clipboard-coding-system 'euc-cn)
+潞潞脳脰脮鲁脤霉脗脪脗毛碌脛脦脢脤芒
+(set-clipboard-coding-system 'euc-cn)
 
 (setq tramp-default-method "plink")
 

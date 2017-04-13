@@ -1,0 +1,16 @@
+;; Emacs-W3 HTTP cookies file
+;; Automatically generated file!!! DO NOT EDIT!!!
+
+(setq url-cookie-storage
+ '(("www.so.com"
+  [url-cookie "QiHooGUID" "2B9E9ABF0CA3746E17FB060A4E6AD1B3.1490852527326" "30-Mar-2019 05:42:07.00 GMT" "/" "www.so.com" nil]
+  [url-cookie "Max-Age" "63072000" "30-Mar-2019 05:42:07.00 GMT" "/" "www.so.com" nil]
+  [url-cookie "tso_Anoyid" "11149085252721915721" "30-Mar-2019 05:42:07.00 GMT" "/" "www.so.com" nil]))
+)
+(setq url-cookie-secure-storage
+ 'nil)
+
+;; Local Variables:
+;; version-control: never
+;; no-byte-compile: t
+;; End:

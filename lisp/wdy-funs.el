@@ -83,6 +83,26 @@
   (interactive)
   (find-file "~/.emacs.d/lisp/init-basic.el"))
 
+(defun wdy-org-insert-style-inner ()
+  "插入org-mode的html css文件"
+  (interactive)
+  (insert "#+INCLUDE: ~/.emacs.d/org-style/red/style_inner.css"))
+
+(defun wdy-org-begin ()
+  "开始写org文档, 默认插入标题，引入样式"
+  (interactive)
+  (progn
+	(goto-char (point-min))
+	(insert "#+TITLE:\n")
+	(insert "#+INCLUDE: ~/.emacs.d/org-style/red/style_inner.css")))
+
+(defun wdy-org-insert-and-copy-style ()
+  "插入org-mode样式饮用，并把样式文件复制到当前文件目录下"
+  (interactive)
+  (progn
+  	(insert "#+INCLUDE: ~/.emacs.d/org-style/red/setup.org")
+	(copy-file "~/.emacs.d/org-style/red/style.css" default-directory)))
+
 
 ;; (defun hello () 
 ;;   (save-excursion
@@ -94,48 +114,48 @@
 ;; 	  (insert (current-time-string))
 ;;     (run-with-timer 1 nil 'hello)))))
 
+;;(shell-command "explorer d:")
+;;(global-set-key "\C-c\ \C-r" 'wdy-open-funs-el)
 
-;(shell-command "explorer d:")
-;(global-set-key "\C-c\ \C-r" 'wdy-open-funs-el)
 
-(defun wdy-speak (string)
-  "朗读文本"
-  (with-temp-file "~/speak.vbs"
-    (progn
-      (save-excursion
-      (insert "CreateObject(\"SAPI.SpVoice\").Speak ")
-      (insert (concat "\"" string "\""))
-      (start-process-shell-command  "spvoice" nil "wscript ~/speak.vbs")))))
+;; (defun wdy-speak (string)
+;;   "朗读文本"
+;;   (with-temp-file "~/speak.vbs"
+;;     (progn
+;;       (save-excursion
+;;       (insert "CreateObject(\"SAPI.SpVoice\").Speak ")
+;;       (insert (concat "\"" string "\""))
+;;       (start-process-shell-command  "spvoice" nil "wscript ~/speak.vbs")))))
 
-(defun wdy-speak-region (start end)
-  "朗读选中的文本中的单词"
-  (interactive "r")
-  (save-excursion
-    (let ((text (buffer-substring start end)))
-      (with-temp-buffer "*speak*"
-			(progn
-			  (insert text)
-			  (goto-char  (point-min))
-			  (while (search-forward-regexp "['\"]" nil 'move) 
-			    (replace-match "引号"))
-			  (goto-char  (point-min))
-			  (while (search-forward-regexp "(" nil 'move) 
-			    (replace-match "左括号"))
-			  (goto-char  (point-min))
-			  (while (search-forward-regexp ")" nil 'move) 
-			    (replace-match "右括号"))
-			  (goto-char  (point-min))
-			  (while (search-forward-regexp "[\\\\]" nil 'move) 
-			    (replace-match "反斜杠"))			  
-			  (goto-char  (point-min))
-			  (while (search-forward-regexp "[\n\r]" nil 'move) 
-			    (replace-match ","))
-			  (wdy-speak (buffer-string)))))))
+;; (defun wdy-speak-region (start end)
+;;   "朗读选中的文本中的单词"
+;;   (interactive "r")
+;;   (save-excursion
+;;     (let ((text (buffer-substring start end)))
+;;       (with-temp-buffer "*speak*"
+;; 			(progn
+;; 			  (insert text)
+;; 			  (goto-char  (point-min))
+;; 			  (while (search-forward-regexp "['\"]" nil 'move) 
+;; 			    (replace-match "引号"))
+;; 			  (goto-char  (point-min))
+;; 			  (while (search-forward-regexp "(" nil 'move) 
+;; 			    (replace-match "左括号"))
+;; 			  (goto-char  (point-min))
+;; 			  (while (search-forward-regexp ")" nil 'move) 
+;; 			    (replace-match "右括号"))
+;; 			  (goto-char  (point-min))
+;; 			  (while (search-forward-regexp "[\\\\]" nil 'move) 
+;; 			    (replace-match "反斜杠"))			  
+;; 			  (goto-char  (point-min))
+;; 			  (while (search-forward-regexp "[\n\r]" nil 'move) 
+;; 			    (replace-match ","))
+;; 			  (wdy-speak (buffer-string)))))))
 
-(defun wdy-date ()
-  "语音播报日期时间"
-  (interactive)
-  (wdy-speak (format-time-string "%m月%d号%a%H点%M分")))
+;; (defun wdy-date ()
+;;   "语音播报日期时间"
+;;   (interactive)
+;;   (wdy-speak (format-time-string "%m月%d号%a%H点%M分")))
 
 
 (defun wdy-auto-export-html ()

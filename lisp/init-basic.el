@@ -29,12 +29,13 @@
 (setq show-paren-style 'parentheses)
 
 ;;显示列号
-(setq column-number-mode t)
-;;(setq line-number-mode nil)
-(setq linum-format "%d ")
+;; (setq column-number-mode t)
+;; (setq line-number-mode nil)
+;; (setq linum-format "%d ")
 
 ;;在左侧显示行号
-(global-linum-mode 'linum-mode)
+;(global-linum-mode 'linum-mode)
+
 
 ;;set mark(进入选择文本模块）
 (global-set-key (kbd "M-SPC") 'set-mark-command)
@@ -71,7 +72,7 @@
 (setq display-time-24hr-format t)
 
 ;;光标为竖线
-(setq-default cursor-type 'bar)
+(setq-default cursor-type t)
 
 ;;光标颜色
 ;(set-cursor-color "green")
@@ -105,7 +106,7 @@
 ;; 设置Tab为4个字符
 (setq indent-tabs-mode nil)
 (setq tab-width 4)
-(setq default-tab-width 4); default-tab-width is an obsolete
+;(setq default-tab-width 4); default-tab-width is an obsolete
 
 ;; eshell 命令颜色
 (autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t) 

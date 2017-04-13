@@ -1,3 +1,11 @@
+# Turn off default internal styles
+#+OPTIONS: html-style:nil
+
+# Exporting to HTML5
+#+HTML_DOCTYPE: html5
+#+HTML_HEAD: <meta http-equiv="X-UA-Compatible" content="IE=edge">
+#+HTML_HEAD: <meta name="viewport" content="width=device-width, initial-scale=1">
+
 #+BEGIN_HTML
 <style type="text/css">
 /* Welcome to Compass.

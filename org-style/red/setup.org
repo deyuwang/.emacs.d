@@ -7,4 +7,4 @@
 #+HTML_HEAD: <meta name="viewport" content="width=device-width, initial-scale=1">
 
 # Add notes.css here
-#+HTML_HEAD: <link href="./css/style.css" rel="stylesheet" type="text/css" />
+#+HTML_HEAD: <link href="./style.css" rel="stylesheet" type="text/css" />

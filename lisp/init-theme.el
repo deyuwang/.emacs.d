@@ -17,11 +17,17 @@
   (not (is-at-home)))
 
 (load-theme 'misterioso t)
-(set-cursor-color "green")
 
 ;; (if (is-at-night)
 ;;     (load-theme 'solarized-dark t)
 ;;   (load-theme 'solarized-light t))
 
+(defadvice text-scale-increase (around all-buffers (arg) activate)
+    (dolist (buffer (buffer-list))
+      (with-current-buffer buffer
+        ad-do-it)))
 
+(set-cursor-color "green")
 (provide 'init-theme)
+
+
